@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Send' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="fullscreen-tab" [ngClass]="{blur: isBlur}" #scrollArea>
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="90" pullMax="180">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- <div *ngIf="hasBtcWallets || hasBchWallets"> -->
+  <div class="send-header-wrapper">
+    <span class="send-heading" translate>Recipient</span>
+    <ion-item class="search-wrapper">
+      <ion-icon item-start class="bitcoin-icon" name="search-btc"></ion-icon>
+      <ion-icon item-start class="copy-icon" name="copy-address" (click)="pastetoinput()"></ion-icon>
+      <ion-input placeholder="{{'Search or enter bitcoin address' | translate}}" [(ngModel)]="search" (ngModelChange)="findContact(search)"></ion-input>
+     </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="searchError">
+      {{ searchErrorMsg }}.</div>
+    <ion-item class="icon-wrapper">
+      <div class="tdiv">
+        <div class="row">
+          <div class="box-notification3 warn primary-color e2e-got-it">
+            <a (click)="pastetoinput()">
+              <ion-icon name="tab-paste" item-start></ion-icon>
+              <span>{{'Paste Address'|translate}}</span>
+            </a>
+          </div>
+          <div class="box-notification3 warn primary-color">
+            <a (click)="openScanner()">
+              <ion-icon name="tab-scan" item-start></ion-icon>
+              <span>{{'Scan QR'|translate}}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </div>
+
+  <div [ngClass]="{
+      'content-animation': slideDown,
+      'initial-margin': validDataFromClipboard
+    }">
+    
+    <page-feedback-card #showCard class="hide-tabbar"></page-feedback-card>
+    <page-survey-card #showSurvey class="hide-tabbar" ></page-survey-card>
+    <page-eth-live-card #showEthLiveCard (addEthClicked)="addWallet(true)" class="hide-tabbar"></page-eth-live-card>
+
+
+    <create-new-wallet *ngIf="!wallets || !wallets[0]"></create-new-wallet>
+
+    <div class="card">
+     <!-- <div class="card"> -->
+        <ion-item-divider>
+          <div class="title" item-start>
+            <img
+              src="assets/img/icon-bitcoin.svg"
+              alt="Bitcoin Wallets"
+              width="18"
+            />
+            <span translate>Wallets</span>
+          </div>
+          <div item-end>
+            <button
+              ion-button
+              clear
+              icon-only
+              color="grey"
+              (click)="addWallet()" 
+            >
+              <ion-icon name="add"></ion-icon>
+            </button>
+            <button
+              ion-button
+              clear
+              icon-only
+              color="grey"
+              (click)="reorderBtc()"
+            >
+              <ion-icon name="move"></ion-icon>
+            </button>
+          </div>
+          <div item-end *ngIf="showReorderBtc">
+            <button ion-button clear color="secondary" (click)="reorderBtc()">
+              {{ 'Reorder Done' | translate }}
+            </button>
+          </div>
+      </ion-item-divider>
+
+
+      <div *ngFor="let walletGroup of walletsGroups; let i = index" class="wallets-container">
+        <div class="section-header" *ngIf="walletGroup[0].canSign">
+          <span class="key-name" *ngIf="walletsGroups.length > 1">{{profileProvider.getWalletGroup(walletGroup[0].keyId).name}}</span>
+          <span *ngIf="walletsGroups.length == 1" translate>Wallets</span>
+          <div class="collapse" (click)="collapseGroup(walletGroup[0].keyId)">
+            <span *ngIf="!walletGroup[0].canAddNewAccount" class="legacy-tag" translate>Legacy</span>
+            <span class="collapse-btn" *ngIf="walletsGroups.length > 1">
+              <ion-icon *ngIf="!isCollapsed(walletGroup[0].keyId)" name="ios-arrow-down"></ion-icon>
+              <ion-icon *ngIf="isCollapsed(walletGroup[0].keyId)" name="ios-arrow-up"></ion-icon>
+            </span>
+          </div>
+        </div>
+        <ion-list class="sliding-container wallets" [ngClass]="{'collapsed': isCollapsed(walletGroup[0].keyId)}">
+          <div *ngFor="let wallet of walletGroup" class="wallet-wrapper">
+            <ion-item-sliding #slidingItem>
+              <button ion-item detail-none (click)="onWalletAction(wallet, 'send', slidingItem)">
+                <wallet-item-content [wallet]="wallet"></wallet-item-content>
+              </button>
+              <ion-item-options side="left">
+                <button class="action action--send" ion-button (click)="onWalletAction(wallet, 'send', slidingItem)">
+                  <div class="action__icon"><img src="assets/img/send.svg" /></div>
+                  <div class="action__text">Send</div>
+                </button>
+              </ion-item-options>
+              <ion-item-options side="right">
+                <button class="action action--receive" ion-button (click)="onWalletAction(wallet, 'send', slidingItem)">
+                  <div class="action__icon"><img src="assets/img/receive.svg" /></div>
+                  <div class="action__text">Receive</div>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </div>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="section-header" *ngIf="readOnlyWalletsGroup && readOnlyWalletsGroup.length > 0" translate>
+      Read Only Wallets
+    </div>
+
+    <div *ngFor="let readOnlyWallet of readOnlyWalletsGroup; let i = index" class="wallets-container">
+      <ion-list class="sliding-container wallets">
+        <div class="wallet-wrapper">
+          <ion-item-sliding #slidingItem>
+            <button ion-item detail-none (click)="onWalletAction(readOnlyWallet, 'view', slidingItem)">
+              <wallet-item-content [wallet]="readOnlyWallet"></wallet-item-content>
+            </button>
+            <ion-item-options side="left">
+              <button class="action action--send" ion-button (click)="onWalletAction(readOnlyWallet, 'send', slidingItem)">
+                <div class="action__icon"><img src="assets/img/send.svg" /></div>
+                <div class="action__text">Send</div>
+              </button>
+            </ion-item-options>
+            <ion-item-options side="right">
+              <button class="action action--receive" ion-button (click)="onWalletAction(readOnlyWallet, 'receive', slidingItem)">
+                <div class="action__icon"><img src="assets/img/receive.svg" /></div>
+                <div class="action__text">Receive</div>
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+  <!-- </div> -->
+  <div *ngIf="!hasBtcWallets && !hasBchWallets" class="no-wallet-message">
+    <span translate>To get started, you'll need to create a bitcoin wallet and get some bitcoin.</span>
+  </div>
+</ion-content>

@@ -1,0 +1,221 @@
+@import "../assets/animate/animate.scss";
+.animateApp{
+// ********************** My Classes that extended *************
+
+    .pulse{
+        @include pulse(
+            $duration:1.5s,
+            $count: infinite,
+            $delay: 0s,
+            $function: ease, 
+            $fill: both
+            ); 
+        } 
+    .bounceInRight{
+        @include bounceInRight(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .2s,
+            $function: ease, 
+            $fill: both
+            ); 
+        } 
+
+    .flipInX{
+        @include flipInX(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .2s,
+            $function: ease, 
+            $fill: both
+            );
+        }
+    .rotateInDownLeft{
+        @include rotateInDownLeft(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .2s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+    .fadeIn{
+        @include fadeIn(
+            $duration:1.5s,
+            $count: 1,
+            $delay: 0s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+ 
+    .fadeInUp{
+        @include fadeInUp(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .25s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+    .fadeInDown{
+            @include fadeInDown(
+            $duration:1.5s,
+            $count: 1,
+            $delay: .25s,
+            $function: ease, 
+            $fill: both
+            ); 
+        }
+    .fadeInRight{
+        @include fadeInRight(
+        $duration:1.5s,
+        $count: 1,
+        $delay: .25s,
+        $function: ease, 
+        $fill: both
+        ); 
+    }
+    
+    .fadeInLeft{
+        @include fadeInLeft(
+        $duration:1.5s,
+        $count: 1,
+        $delay: .25s,
+        $function: ease, 
+        $fill: both
+        ); 
+    } 
+        
+// *************************************
+    .welcome{
+        @extend .fadeInUp;
+    }
+
+    .appForm{
+        .item-ios{
+            &:nth-child(2n + 1){
+                @extend .fadeInRight;
+            }
+            &:nth-child(2n){
+                @extend .fadeInLeft;
+            }
+        }
+    }
+    page-sign-in,
+    page-sign-up{
+        .scroll-content{
+            .button-ios,p{
+                @extend .fadeInUp;      
+            }
+        }
+    }
+    .icon{
+        &[item-right]{
+             @extend .fadeInRight; 
+        }
+        &[item-left]{
+             @extend .fadeInLeft; 
+        }
+    }
+    .header-ios{
+        .bar-button-ios{
+            @extend .fadeInDown; 
+        }
+    }
+    page-summary{
+        .avatarContent{
+            @extend .fadeInLeft; 
+        } 
+        .loginInfo{
+            @extend .fadeInRight; 
+        }
+        .graphs{
+            .item-ios{
+                &:nth-child(2n + 1){
+                    @extend .fadeInRight;
+                }
+                &:nth-child(2n){
+                    @extend .fadeInLeft;
+                }
+            }
+        }
+        .mostUse{
+            >p{
+                @extend .fadeInLeft; 
+            }
+            .grid{
+                @extend .fadeInDown; 
+            }
+        }
+    }
+    page-currency-convertor,page-transfer{
+        .button-ios{
+            @extend .fadeInUp;  
+        }
+    }
+    page-contact-us{
+        .button-ios{
+            &[float-right]{
+                @extend .fadeInRight;
+            }
+        }
+    }
+    page-personal-account{
+        .scroll-content{
+            >p{
+                @extend .fadeInDown; 
+            }
+            .grid{
+                .col{
+                    @extend .flipInX;
+                }
+            }
+        }
+    }
+    .acountTitle{
+        @extend .fadeInRight;
+    }
+    page-account-details{
+        .details{
+            .myLabel{
+                @extend .fadeInDown; 
+            }
+            .grid{
+                .col{
+                    &:nth-child(2n + 1){
+                        @extend .fadeInLeft;
+                    }
+                    &:nth-child(2n){
+                        @extend .fadeInRight;
+                    }
+                }
+            }
+            .button-ios{
+                @extend .fadeInUp;  
+            }
+        }
+    }
+    page-add-account{
+        .scroll-content{
+            .button-ios{
+                @extend .fadeInUp; 
+            }
+        }
+    }
+    .map,.result{
+        @extend .fadeIn;
+    }
+    .profile{
+        .imgBg,h4,p{
+            @extend .fadeInUp;  
+        }
+    }
+    .footer{
+        .button-ios{
+            @extend .fadeInUp; 
+        }
+    }
+
+}
+

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start >
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="ios-menu" style="color: black;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Report Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <!-- Transaction Details -->
+  <div class="details">
+    <p style="color: black;"><strong>TRANSACTION DETAILS:</strong></p>
+    <ion-grid>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left>
+          <p>Amount</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>$ {{ transdata.amount_fiat }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left> 
+          <p>Transaction Date</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ transdata.transaction_date }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left>
+          <p>Date Reported</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ transdata.created_at }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left>
+            <p>Wallet Address</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ transdata.address }}</p>
+          </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left>
+          <p>Crypto Amount</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ transdata.amount_crypto }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p style="color: black;"><strong>DETAILS ABOUT REPORT:</strong></p>
+    <ion-grid>
+        <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Email</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ transdata.email }}</p>
+          </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Phone Number</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ transdata.phone }}</p>
+          </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Scam Details</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ transdata.info }}</p>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p style="color: black;"><strong>STATUS:</strong></p>
+    <ion-grid>
+        <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Report Status</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ getstatuscondition(transdata.zendesk_ticket.status) }}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Updates</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{  checktag(transdata.zendesk_ticket.tags) }}</p>
+          </ion-col>
+        </ion-row>
+         <ion-label stacked><p style="color: black;"><strong>ADD ADDITIONAL PHOTOS</strong></p></ion-label>
+         <p>Add more details/proof about the transaction</p>
+            <!-- <button ion-button block color="color2" (click)="openUpload(transdata.id)">
+            Update</button> -->
+
+            <label  ion-button block color="color2" for="file-upload" class="custom-file-upload"(click)="openUpload(transdata.id)">
+                Update
+                <input type="file" [ngModelOptions]="{standalone:
+   true}" [(ngModel)]="files" />
+          </label>
+          <!-- </ion-item>     -->
+        <!-- </ion-item>  -->
+    </ion-grid>
+  </div>
+</ion-content>

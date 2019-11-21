@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start >
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="ios-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="appForm">
+    <div class="welcome">
+    <div class="logo">
+      <h3 style="color: orange;">Getcoins Hub</h3>
+      <p style="color: black;">Reset Password.</p>
+      <img src="assets/img/locations.png">
+    </div>
+  </div>
+
+  <form [formGroup]="createForm">
+    <ion-list>
+        <!-- Email input -->
+        <ion-item  *ngIf="phone">
+          <!-- <ion-label floating>Phone Number</ion-label> -->
+          <ion-icon name="ios-call-outline" item-left></ion-icon>
+          <ion-input 
+          placeholder="Phone Number"
+          type="number"
+          formControlName="phone_number"></ion-input>
+        </ion-item>
+        <!-- password input -->
+        <ion-item *ngIf="passwordkey">
+          <!-- <ion-label floating>Set Login Pin</ion-label> -->
+          <ion-icon name="ios-lock-outline" item-left></ion-icon>
+          <ion-input  
+            placeholder="Set Login Pin"
+            type="number"
+            style="-webkit-text-security: disc;"
+            formControlName="password"></ion-input>
+        </ion-item> 
+        <!-- otp -->
+        <ion-item *ngIf="otp">
+          <!-- <ion-label floating>otp</ion-label> -->
+          <ion-icon name="ios-lock-outline" item-left></ion-icon>
+          <ion-input 
+            placeholder="SMS verification code"
+            type="number"
+            formControlName="otp"></ion-input>
+        </ion-item>
+    </ion-list>
+    </form>
+  </div>
+  <button ion-button block color="color2" (click)="loginToWallet()"> {{ Register }}</button>
+</ion-content>

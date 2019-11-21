@@ -1,0 +1,63 @@
+page-report-details {
+    input[type="file"] {
+        display: none;
+    }
+
+    .bottomRow{
+      margin-top: -20px;
+    }
+    .grid{
+        padding:$mainMarg/2;
+        .col{
+            padding:$mainMarg/2;
+            .item-ios{
+                background-color: color($colors,color3);
+                padding:$mainMarg;
+                border-radius:$button-ios-border-radius;
+                p{
+                    color: color($colors,semilight);
+                    margin:0px;
+                    @include whiteNoWrap(20px);
+                    &.cost{
+                        color: color($colors,color2);
+                    }
+                }
+                .label{
+                    height:auto!important;
+                    line-height:normal!important;
+                }
+            }
+        }
+    }
+
+ .appForm{
+        background-color:color($colors,semilight);
+        @extend %boxShadow;
+        .myLabel{
+            margin: $mainMarg $mainMarg 0px $mainMarg;
+        }
+        .grid{
+            padding:$mainMarg/2;
+            .col{
+                padding:$mainMarg/2;
+                .item-ios{
+                    background-color: color($colors,color3);
+                    padding:$mainMarg;
+                    border-radius:$button-ios-border-radius;
+                    p{
+                        color: color($colors,semilight);
+                        margin:0px;
+                        @include whiteNoWrap(20px);
+                        &.cost{
+                            color: color($colors,color2);
+                        }
+                    }
+                    .label{
+                        height:auto!important;
+                        line-height:normal!important;
+                    }
+                }
+            }
+        }
+    }
+}

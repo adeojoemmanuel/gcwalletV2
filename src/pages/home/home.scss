@@ -1,0 +1,12 @@
+page-home {
+  .home-logo {
+    height: 51px; //**GC edit
+    padding: 2px 0; //**GC edit
+    position: relative;
+    top: 3px;
+  }
+  button[full] {
+    background: $color-secondary;
+    margin: 20px 0 0 0;
+  }
+}

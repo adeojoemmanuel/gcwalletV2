@@ -1,0 +1,124 @@
+page-atm-locations {
+  h1 {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    &.h1_small {
+      font-size: 1.8rem;
+    }
+  }
+  .store_map {
+    padding: 0;
+    border: 5px solid $white;
+    height: 220px;
+    &_div {
+      height: 100%;
+    }
+  }
+  .store_img {
+    padding: 5px;
+    img {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+  .item-md {
+    // background: purple;
+    .item-button.atm-location_button_dir,
+    .atm-location_button_call {
+      height: 30px;
+    }
+  }
+  .item-md.item-block .item-inner {
+    padding-right: 0px;
+  }
+  .atm-location_button_dir {
+    width: 99%;
+    background: $color-secondary;
+    color: $white;
+    font-weight: 600;
+    padding: 0;
+  }
+  .atm-location_button_call {
+    width: 99%;
+    background: $gray-300;
+    color: $color-secondary;
+    font-weight: 600;
+    padding: 0;
+  }
+  .item-wp.item-block .item-inner {
+    padding-right: 0px;
+  }
+  ion-card.card {
+    width: 100%;
+    .item-block {
+      padding: 5px 24px;
+    }
+    .item-ios.item-block .item-inner {
+      padding-right: 0;
+      border-bottom: 0.55px solid #f4f4f4;
+      .label-ios {
+        margin: 14px 0;
+      }
+    }
+    .item-ios .item-button {
+      padding: 0;
+    }
+  }
+  ion-content {
+    ion-item {
+      .item-md .item-button {
+        height: 3.6rem;
+        font-size: 1.4rem;
+        padding: inherit;
+      }
+      button {
+        // .button-inner {
+        //   border: 1px solid green;
+        //   background: pink;
+        // }
+        // background: pink;
+      }
+    }
+  }
+  .card-content-ios.store_info {
+    padding: 13px 30px 14px;
+  }
+  .store_info {
+    padding: 13px 30px 14px;
+    &_div {
+      // margin-top: 15px;
+      padding: 20px 0 10px 0;
+      border-top: 1px solid #eee;
+      // box-shadow: 0px 2px 1px #eee;
+      h2 {
+        margin: 5px 0;
+        font-weight: 600;
+        text-shadow: 0px 0px 1px $color-secondary;
+        // color: $color-primary;
+      }
+      &:first-child {
+        border-top: 0px;
+        // box-shadow: 0;
+      }
+    }
+    .open_hours {
+      &_h3 {
+        font-weight: 600;
+      }
+      &_h3,
+      &_p {
+        display: inline;
+        line-height: 25px;
+        // border: 1px solid green;
+      }
+    }
+  }
+}
+.platform-windows {
+  page-atm-locations {
+    .label-wp {
+      margin-right: 0;
+    }
+  }
+}

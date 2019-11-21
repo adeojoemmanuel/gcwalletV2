@@ -1,0 +1,21 @@
+.getstarted {
+    background-image:url(assets/img/back.png);
+    .logo{
+        h3{
+            color: color($colors,semilight);
+            font-size:4.6rem!important;
+            @include whiteNormal($mainHeight,1);
+            font-weight:400;
+            margin:0px;
+        }p{
+            @include whiteNormal(16px,1);
+            margin:0px;
+            color:color($colors,semilight);
+            font-size:$mainFont!important;
+            font-weight:200;
+            letter-spacing:.2rem;
+        }
+    }
+    
+    background-image:url(../assets/img/back.png);
+}

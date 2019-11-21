@@ -1,0 +1,70 @@
+<ion-menu [content]="content" swipeEnabled="false" type="overlay">
+  <ion-content>
+    <ion-list>
+      <ion-item menuClose  *ngFor="let p of pages" (click)="openPage(p.component)">
+        <ion-icon class="{{p.icon}}" item-left></ion-icon>
+        {{p.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <button ion-button clear menuClose (click)="logout()">Log out</button>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content  [class.animateApp]="animateVarible==true" swipeBackEnabled="false"></ion-nav> 
+
+
+
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons left style>
+      <button (click)="toggleMenu()" ion-button icon-only left>
+        <ion-icon name="ios-menu" style="color: black;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Recent Activity</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher
+    (ionRefresh)="doRefresh($event)"
+    *ngIf="!showReorderBtc && !showReorderBch"
+  >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+   <!-- account name , number and currancy -->
+
+   <!-- <button ion-button menuToggle>Toggle Menu</button> -->
+  <div class="acountTitle"> 
+    <span>Welcome,</span>
+
+    <p class="countNum">
+      {{userid}}.</p>
+     <!-- <span>8134964,</span>
+      12345
+    </p> 
+
+    <span>33324 $</span>-->
+  </div>
+  
+  <div class="appForm">
+    <p class="myLabel">Your recent transactions</p>
+    <ion-grid>
+      <p *ngIf="loading">Loading...</p>
+      <ion-row>
+        <ion-col col-12 col-md-6 col-lg-4  *ngFor="let data of (newResults); let i = index"
+              (click)="goToLocationDetails(data.id, data, data.kiosk_id)">
+          <button ion-item class="item-ios">
+            <ion-icon item-right name="md-add-circle"></ion-icon>
+            <p>{{ convertdate(data.created_at) | date:'MM-dd-yyyy' }}</p>
+            <p class="cost"><span>{{ getCurrency(data.currency_fiat) }}</span> {{ getAmount(data.amount_fiat) }} </p>
+            <p>ATM Status: {{getStatus(data.status)}} <span></span></p>
+            <p>Cryptocurrency: {{getCurrencyCrypto(data.currency_crypto)}}</p>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

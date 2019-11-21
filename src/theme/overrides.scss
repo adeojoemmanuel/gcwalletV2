@@ -1,0 +1,41 @@
+/*
+ * Copay Distribution SCSS overrides
+ */
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$color-primary: #495057; //**GC edit (BlueTheme: 8fbac0), f79420
+$color-secondary: #f79420; //**GC edi (BlueTheme: 10263e), 495057
+$color-secondary-dark: #dee2e6; //**GC edit (BlueTheme: 3b536b from portal lightest blue)
+$icon-border-radius: 3px;
+$txp-icon-border-radius: 0.3rem;
+$toolbar-background: $color-secondary; //**GC edit
+$toolbar-scanner: rgba(247, 148, 32, 0.8); //**GC edit
+
+$onboarding-welcome-bg: none;
+$onboarding-comment-color: rgba(255, 255, 255, 0.5);
+$onboarding-primary-color: $color-primary;
+$onboarding-gradient-top-color: #192c3a;
+
+$slider-bg-color: $color-primary; //**GC edit
+$white: #ffffff;
+$gray-custom: #e6e6e6;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$toolbar-md-height: 46px; // **GC v2 Edit
+$toolbar-ios-height: 46px; // **GC v2 Edit

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start >
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="ios-menu" style="color: black;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Report Transaction</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<form id="form1" name="form1" #form="ngForm">
+	    <ion-list>
+			<ion-item>
+			  <ion-label floating>YYYY-MMM-DD</ion-label>
+			  <ion-datetime  disabled [ngModelOptions]="{standalone:
+   true}" [(ngModel)]="transaction_date" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+			</ion-item>
+	        <ion-item>
+		        <ion-label floating>Transaction Amount</ion-label>
+		        <ion-input [ngModelOptions]="{standalone:
+   true}" disabled  [(ngModel)]="amount_fiat" name="amount_fiat1" type="number"></ion-input>
+	        </ion-item>
+	        <ion-item>
+		        <ion-label floating>Crypto Amount</ion-label>
+		        <ion-input [ngModelOptions]="{standalone:
+   true}" disabled  [(ngModel)]="amount_crypto" name="amount_crypto1"  type="number"></ion-input>
+	        </ion-item>
+	        	<ion-input [ngModelOptions]="{standalone:
+   true}" disabled  [(ngModel)]="atm_id" name="atm_id1" type="hidden"></ion-input>
+			    <ion-input [ngModelOptions]="{standalone:
+   true}"  disabled [(ngModel)]="transaction_id" name="transaction_id1" type="hidden"></ion-input>
+	        <ion-item>
+	        	<ion-label floating>Status</ion-label>
+	        	<ion-input [ngModelOptions]="{standalone:
+   true}" disabled [(ngModel)]="status" name="status1" type="text"></ion-input>
+	        </ion-item>
+	        <ion-item>
+	        	<ion-label floating>Address</ion-label>
+	        	<ion-input [ngModelOptions]="{standalone:
+   true}" disabled [(ngModel)]="address" name="address1" type="text"></ion-input>
+	        </ion-item>
+	        <ion-input [ngModelOptions]="{standalone:
+   true}" disabled [(ngModel)]="kiosk_id" name="kiosk_id1" type="hidden"></ion-input>
+	        <ion-item>
+			  <ion-label floating>Explain Info About Scam</ion-label>
+			  <ion-textarea [ngModelOptions]="{standalone:
+   true}" [(ngModel)]="info" name="info1"></ion-textarea>
+			</ion-item>
+			<ion-item>
+	        	<ion-label floating>Email Address</ion-label>
+	        	<ion-input [ngModelOptions]="{standalone:
+   true}" [(ngModel)]="email" type="email" name="email1"></ion-input>
+	        </ion-item>
+	        <ion-item>
+	        	<ion-label floating>Best Phone Number</ion-label>
+	        	<ion-input [ngModelOptions]="{standalone:
+   true}" [(ngModel)]="phone" type="number" name="phone1"></ion-input>
+	    	</ion-item>
+	    	<!-- <ion-input type="file"  [(ngModel)]="files" type="hidden"></ion-input> -->
+
+	    	<!-- <ion-item> -->
+		        <!-- <ion-item> -->
+		            <ion-label stacked>Kindly upload your ID, police report And any other Related Info to the Scam</ion-label>
+<!-- 				    <button ion-button block color="color2" (click)="openUpload()">
+				    Upload File</button> -->
+				    <span>{{uploadFileCount}} Image selected</span>
+				    <label  ion-button block color="color2" for="file-upload" class="custom-file-upload"(click)="openUpload($event)">
+					      Update
+					      <input [ngModelOptions]="{standalone:
+   true}" type="file" multiple [(ngModel)]="files" name="files1" />
+					</label>
+				    
+			    <!-- </ion-item>	   -->
+		    <!-- </ion-item>  -->
+		    <button ion-button [disabled]="buttonDisabled" full primary (click)="submitform()">
+              Submit
+            </button>
+	    </ion-list>
+    </form>
+</ion-content>

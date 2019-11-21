@@ -1,0 +1,121 @@
+.item {
+  &.warn {
+    background-color: rgb(255, 242, 244);
+
+    ion-note {
+      color: rgb(229, 108, 123);
+    }
+  }
+}
+
+.bp-list {
+  &.top-padding {
+    margin-top: 40px;
+  }
+
+  ion-item-divider {
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 18px !important;
+    padding-left: 20px;
+    background: white;
+
+    ion-label.label {
+      color: #353535;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+
+  &__divider-button.item-button.button {
+    height: 22px;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    ion-icon {
+      color: #4a4a4a;
+      font-size: 20px;
+      margin-bottom: 0;
+      margin-top: 0;
+      opacity: 0.8;
+    }
+  }
+
+  .item {
+    border: 0;
+
+    &.item-ios,
+    &.item-md {
+      border: 0;
+
+      &.item-block,
+      &:last-child {
+        border: 0;
+      }
+
+      .item-inner {
+        border: none;
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+
+      &.item-ios {
+        font-size: 16px;
+      }
+
+      &:not(.item-divider):not(.no-border) {
+        &:after {
+          display: block;
+          content: '';
+          height: 1px;
+          background: transparent;
+          position: absolute;
+          bottom: 0;
+          $side-padding: 15px;
+          left: $side-padding;
+          width: calc(100% - #{2 * $side-padding});
+          border-bottom: 0.55px solid #ebedf8f7;
+        }
+      }
+    }
+  }
+
+  ion-item-divider {
+    .reorder-option {
+      padding-right: 8px !important;
+    }
+  }
+}
+
+.bp-list.settings-list {
+  ion-item.item,
+  button.item {
+    padding: 12px 0 12px 22px;
+    border-bottom: 0;
+
+    .item-inner {
+      margin-left: 8px;
+
+      ion-note.note {
+        background: #f4f5fb;
+        color: #565d6d;
+        font-weight: 300;
+        padding: 6px 10px;
+        border-radius: 4px;
+      }
+
+      ion-note.note.wallet-warning {
+        background: none;
+        color: #e56c7b;
+      }
+    }
+
+    &:last-child {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+}

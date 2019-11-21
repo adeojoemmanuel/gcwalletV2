@@ -1,0 +1,90 @@
+page-forgotpass {
+    .no-scroll .scroll-content{
+        overflow: hidden;
+    }
+  .header-ios{
+        .back-button{
+            order: 1!important;
+        }
+        .toolbar-title-ios {
+            text-align: left;
+        } 
+    }  
+    .appForm{
+        padding:40px 0px;
+    }
+    p{
+        @include whiteNormal(20px,1);
+        display:inline-block;
+        color: color($colors,color5);
+    }
+}
+.logo{
+    h3{
+        color: color($colors,color5);
+        font-size:2.5rem!important;
+        font-weight:400;
+        margin:0px;
+    }
+    p{
+        margin:0px;
+        color: color($colors,color5);
+        font-size:$mainFont!important;
+        font-weight:200;
+        letter-spacing:.2rem;
+
+    }
+}
+.welcome{
+                width:100%;
+                padding:0px  $mainMarg;
+                text-align:center;
+                min-height: calc( 50% + #{$mainHeight} + 16px );
+                >p{ 
+                    color: color($colors,light);
+                    font-size:$mainFont!important;
+                    font-weight:400;
+                    max-width:215px;
+                    letter-spacing: .1rem;
+                    margin:40px auto;
+                }
+                }
+
+page-welcome {
+    .content-ios{
+        background-image:url(../assets/img/back.png);
+        @extend .imgBg;
+        .scroll-content{
+            display:flex;
+            align-items: flex-end;
+            .welcome{
+                width:100%;
+                padding:0px  $mainMarg;
+                text-align:center;
+                min-height: calc( 50% + #{$mainHeight} + 16px );
+                >p{ 
+                    color: color($colors,light);
+                    @include whiteNormal(42px,3);
+                    font-size:$mainFont!important;
+                    font-weight:400;
+                    max-width:215px;
+                    letter-spacing: .1rem;
+                    margin:40px auto;
+                }
+                .button-ios{
+                    margin-bottom:$mainMarg;
+                    .button-inner{
+                        color: color($colors,color5);
+                    }
+                }
+                >span{
+                    color:color($colors,light);
+                    @include whiteNormal($mainHeight ,1);
+                    display:inline-block;
+                    min-width:100px;
+                    font-size:$mainFont + .1;
+                }
+            }
+        }
+    }
+}

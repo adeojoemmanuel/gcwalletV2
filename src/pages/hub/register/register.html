@@ -1,0 +1,72 @@
+<ion-content padding>
+  <div class="appForm">
+    <div class="welcome">
+      <div class="logo">
+        <ion-slides pager>
+          <ion-slide>
+             <h3 style="color: orange;">Getcoins Hub</h3>
+              <p style="color: black;">View your ATM transaction history, confirmation <br>status and more</p>
+            <img src="assets/img/locations3.png">
+          </ion-slide>
+          <ion-slide>
+             <h3 style="color: orange;">Getcoins Hub</h3>
+              <p style="color: black;">View nearby ATM locations and preverify <br>your account</p>
+           <img src="assets/img/locations2.png">
+          </ion-slide>
+          <ion-slide>
+         <h3 style="color: orange;">Getcoins Hub</h3>
+            <p style="color: black;">The fastest and easiest way to buy Bitcoin</p>
+           <img src="assets/img/locations.png">
+          </ion-slide>
+        </ion-slides>
+    </div>
+  </div>
+  
+   <form [formGroup]="createForm">
+    <ion-list>
+        <!-- Email input -->
+        <ion-item  *ngIf="phone">
+          <!-- <ion-label floating>Phone Number</ion-label> -->
+          <ion-icon name="ios-call-outline" item-left></ion-icon>
+          <ion-input type="number"
+          placeholder="Phone Number"
+          formControlName="phone_number"></ion-input>
+        </ion-item>
+        <!-- password input -->
+        <ion-item *ngIf="passwordkey">
+          <!-- <ion-label floating>Login Pin</ion-label> -->
+          <ion-icon name="ios-lock-outline" item-left></ion-icon>
+          <ion-input 
+            (input)="onChangeps($event)"
+            type="number"
+            placeholder="Login Pin"
+            style="-webkit-text-security: disc;"
+            formControlName="password"></ion-input>
+        </ion-item> 
+        <ion-item *ngIf="passwordkeysave">
+          <ion-label>Save Password</ion-label>
+          <ion-checkbox (ionChange)="datachanged($event)" [checked]="checkpassword" color="primary"></ion-checkbox>
+        </ion-item>
+        <!-- otp -->
+        <ion-item *ngIf="otp">
+          <!-- <ion-label floating>SMS verification code</ion-label> -->
+          <ion-icon name="ios-lock-outline" item-left></ion-icon>
+          <ion-input 
+            placeholder="SMS verification code"
+            type="number"
+            formControlName="otp"></ion-input>
+        </ion-item>
+        <ion-row right>  
+         <ion-col text-right>   
+          <ion-icon class="proceedbtn button circle button-energized" *ngIf="arrowforward" (click)="loginToWallet()" name="arrow-forward" style="margin-left: 10px;"></ion-icon>  
+         </ion-col> 
+        </ion-row>
+    </ion-list>
+    </form>
+  </div>
+  <button ion-button block color="color2" (click)="loginToWallet()"> 
+    {{ Register }}
+      
+  </button>
+  <p float-right (click)="goTofp()">Forgot Password ?</p>
+</ion-content>

@@ -1,0 +1,1197 @@
+// http: //ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+html {
+  height:  100vh;
+}
+
+body {
+  line-height:  22px;
+  font-family:  'Proxima Nova'; /* **GCEdit:  test*/    
+}
+
+// Alert position
+// --------------------------------------------------
+ion-alert.alert-top {
+  align-items:  center;
+}
+
+// Text wrap
+// --------------------------------------------------
+ion-label {
+  white-space:  normal;
+}
+
+.two-lines {
+  white-space:  normal;
+  overflow:  hidden;
+  text-overflow:  ellipsis;
+  display:  -webkit-box;
+  line-clamp:  2;
+  -webkit-line-clamp:  2;
+  box-orient:  vertical;
+  -webkit-box-orient:  vertical;
+}
+
+// Buttons
+// --------------------------------------------------
+.bottom-absolute {
+  width:  100%;
+  position:  absolute;
+  bottom:  0px;
+  padding:  15px 15px calc(5vw + 1vh) 15px;
+
+  .button {
+    margin:  1.2rem auto;
+    max-width:  360px;
+  }
+}
+
+.button-footer {
+  margin:  0;
+  height:  70px;
+  width:  100%;
+  font-size:  18px;
+}
+
+// Hide border when refresh
+.has-refresher > .scroll-content {
+  border-top:  none !important;
+}
+
+.scroll-content {
+  .wrapper {
+    background-color:  white;
+    min-height:  100%;
+
+    &--feather {
+      background-color:  $feather-dark;
+    }
+  }
+}
+
+ion-spinner * {
+  stroke:  color($colors, light);
+}
+
+.header-ios .toolbar-background-ios {
+  border-width:  0 !important;
+}
+
+  // Item font size   
+.item-title {   
+  //  font-size:  1.4rem;    
+} 
+
+.item-subtitle {
+  margin-top:  5px;
+  display:  block;
+  white-space:  nowrap;
+  overflow:  hidden;
+  text-overflow:  ellipsis;
+  font-weight:  300;
+  font-size:  13px;
+
+  ion-icon {
+    vertical-align:  text-bottom;
+    margin-left:  5px;
+  }
+}
+
+// Fixes IOS 10.3.1 icons
+.item-img {
+  display:  flex;
+  align-items:  center;
+}
+
+// Prevent the names of the tabs from disappearing
+.tabbar .tab-button .tab-button-text {
+  display:  block;
+}
+
+.toolbar.toolbar-md .back-button {
+  margin:  -7px 0 0 0;
+}
+
+.tabbar {
+  .tabs-md &,
+  .tabs-ios & {
+    background:  white;
+  }
+
+  .tabs-ios & {
+    .tab-button-icon {
+      height:  22px;
+    }
+  }
+
+  justify-content:  center;
+  padding-top:  5px;
+  transform:  translate3d(0, 0, 0);
+
+  .tab-button {
+    max-width:  15vw;
+    min-width:  80px; // Prevent the names of the tabs from disappearing
+
+    .tab-button-text {
+      display:  block;
+    }
+  }
+}
+
+// Remove border of icons when screen resolution is big
+.tab-button-icon {
+  overflow:  unset;
+}
+
+// Remove the MD drop-shadow on app header
+.header-md::after {
+  display:  none;
+}
+
+.icon-wallet,
+.icon-card {
+  width:  35px;
+  height:  35px;
+  border-radius:  $icon-border-radius;
+  background-repeat:  no-repeat;
+  background-clip:  padding-box;
+  background-size:  103%;
+}
+
+.icon-wallet {
+  $icon-dim:  36px;
+  height:  $icon-dim;
+  width:  $icon-dim;
+  margin-right:  16px;
+  &.disabled {
+    background-color:  color($colors, grey);
+  }
+}
+
+.icon-wallet2 {
+  background-color:  color($colors, primary);
+  padding:  2px;
+}
+
+.button-item {
+  ion-label {
+    display:  flex;
+    align-items:  center;
+  }
+}
+
+.testnet {
+  filter:  grayscale(100%);
+}
+
+.icon-card {
+  background-color:  #2a3f90;
+}
+
+.big-icon-svg {
+  padding:  10px;
+
+  .bg {
+    padding:  0 7px;
+    border-radius:  $icon-border-radius;
+    width:  40px;
+    height:  40px;
+    background-repeat:  no-repeat;
+    background-clip:  padding-box;
+    background-size:  103%;
+
+    &.green {
+      background:  rgb(1, 209, 162);
+    }
+  }
+}
+
+.logo-services {
+  width:  100px;
+}
+
+.icon-services {
+  overflow:  hidden;
+  background-color:  none;
+  border-radius:  $icon-border-radius;
+  width:  35px;
+  height:  35px;
+  box-shadow:  0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+  background-repeat:  no-repeat;
+  background-clip:  padding-box;
+  background-size:  103%;
+}
+
+.custom-icon {
+  color:  rgb(169, 169, 169);
+}
+
+.icon-contact {
+  width:  35px;
+}
+
+
+.box-notification {
+  cursor:  pointer;
+  padding:  10px 0;
+  border:  none;
+  margin:  10px;
+  text-align:  center;
+  // color:  color($colors, light);
+  a {
+    display:  block;
+    color:  color($colors, light);
+  }
+
+  .icon {
+    vertical-align:  middle;
+    margin:  0 5px;
+  }
+  &.no-margin {
+    margin:  0;
+  }
+  &.success {
+    background-color:  color($colors, success);
+  }
+  &.notice {
+    background-color:  color($colors, dark);
+  }
+  &.warn {
+    background-color:  color($colors, warning);
+  }
+  &.error {
+    background-color:  color($colors, danger);
+  }
+}
+
+.box-notification2 {
+  cursor:  pointer;
+  padding:  10px 0;
+  border:  none;
+  margin:  1%;
+  text-align:  center;
+  width:  47%;
+  // color:  color($colors, light);
+  a {
+    display:  block;
+    color:  color($colors, light);
+    width:  160px;
+  }
+
+  span{
+    font-size:  13px;
+    margin-left:  -5px;
+  }
+  
+  .icon {
+    vertical-align:  middle;
+    margin:  0 5px;
+  }
+  &.no-margin {
+    margin:  0;
+  }
+  &.success {
+    background-color:  color($colors, success);
+  }
+  &.notice {
+    background-color:  color($colors, dark);
+  }
+  &.warn {
+    background-color:  color($colors, warning);
+  }
+  &.error {
+    background-color:  color($colors, danger);
+  }
+}
+
+
+.box-notification3 {
+  cursor: pointer;
+  padding: 2px 0;
+  border: none;
+  margin: 1%;
+  text-align: center;
+  width: 48%;
+  color: color($colors, light);
+  a {
+    display: block;
+    color: color($colors, light);
+    width: 161px;
+  }
+  
+  .icon {
+    vertical-align: middle;
+    // margin: 0 5px;
+    margin-left: -20px;
+  }
+  &.no-margin {
+    margin: 0;
+  }
+  &.success {
+    background-color: color($colors, success);
+  }
+  &.notice {
+    background-color: color($colors, dark);
+  }
+  &.warn {
+    background-color: color($colors, warning);
+  }
+  &.error {
+    background-color: color($colors, danger);
+  }
+}
+
+.gravatar {
+  min-width:  2.5rem;
+  min-height:  2.5rem;
+  border-radius:  $icon-border-radius;
+}
+
+// Compatibility Ionic 1
+.light,
+a.light,
+.stable,
+a.stable {
+  color:  color($colors, light);
+}
+
+.positive,    
+a.positive {    
+  color:  color($colors, secondary);   
+}
+
+.calm,
+a.calm {
+  color:  color($colors, grey);
+}
+
+.positive,
+a.positive {
+  color:  color($colors, primary);
+}
+
+.energized,
+a.energized {
+  // color:  color($colors, warning);
+  color:  color($colors, primary);
+}
+
+.assertive,
+a.assertive {
+  color:  color($colors, danger);
+}
+
+.balanced,
+a.balanced {
+  color:  color($colors, success);
+}
+
+.royal,
+a.royal {
+  color:  color($colors, dark);
+}
+
+.text-gray {
+  color:  color($colors, grey);
+}
+
+.text-bold {
+  font-weight:  700;
+}
+
+.ellipsis {
+  display:  block;
+  overflow:  hidden;
+  text-overflow:  ellipsis;
+  white-space:  nowrap;
+}
+
+.pointer {
+  cursor:  pointer;
+}
+
+.wallet-warning {   
+  color:  color($colors, danger);    
+}   
+.warning-container {    
+  background:  color($colors, danger);   
+  color:  color($colors, light);   
+  padding:  1rem;    
+  border-radius:  10px;    
+}
+
+.card {
+  padding-top:  1px;
+  width:  92%;
+  padding-bottom:  10px;
+  box-shadow:  0 7px 12px rgba(0, 0, 0, 0.06);
+  overflow:  hidden;
+  margin:  20px auto;
+  display:  block;
+  border-radius:  3px;
+  background-color:  #ffffff;
+
+  .item-divider {
+    background-color:  #ffffff;
+    margin-bottom:  5px;
+    min-height:  48px;
+  }
+
+  .item-block {
+    padding:  5px 0 0px 24px;
+  }
+
+  .input-wrapper {
+    padding-bottom:  4px;
+  }
+}
+
+// Set backgrounds transparent so the QR Scanner can be seen behind the app.
+html,
+body,
+.back-transparent,
+ion-app,
+.nav-decor {
+  background:  transparent !important;
+}
+
+ion-icon {    
+  &[class*='tab-'] {    
+    // Instead of using the font-based icons    
+    // We're applying SVG masks   
+    mask-size:  contain;   
+    mask-position:  50% 50%;   
+    mask-repeat:  no-repeat;   
+    background:  currentColor;   
+    width:  2rem !important;   
+    height:  2rem !important;    
+  }   
+  // custom icons   
+  &[class*='tab-home'] {    
+    mask-image:  url(../assets/img/tab-icons/ico-home.svg);    
+  }     
+  &[class*='tab-paste'] {
+    mask-image:  url(../assets/img/iconmonstr-copy-2.svg);   
+  }   
+  &[class*='arrow-back'] {
+    color: white;
+    mask-image:  url(../assets/img/left-arrow.svg);   
+  }
+  &[class*='tab-receive'] {   
+    mask-image:  url(../assets/img/tab-icons/ico-receive.svg);   
+  }   
+  &[class*='tab-scan'] {    
+    mask-image:  url(../assets/img/tab-icons/ico-scan.svg);    
+    width:  3rem !important;   
+  }   
+  &[class*='tab-search-right'] {    
+    mask-image:  url(../assets/img/tab-icons/magnifier-tool.svg);    
+    width:  3rem !important;   
+  }     
+  &[class*='tab-search-left'] {   
+    mask-image:  url(../assets/img/tab-icons/magnify-left.svg);    
+    width:  3rem !important;   
+  }   
+  &[class*='tab-send'] {    
+    mask-image:  url(../assets/img/tab-icons/ico-send.svg);    
+  }   
+  &[class*='tab-settings'] {    
+    mask-image:  url(../assets/img/tab-icons/ico-settings.svg);    
+  }   
+  &[class*='tab-login'] {   
+    mask-image:  url(../assets/img/tab-icons/ico-login.svg);   
+  }   
+  &[class*='tab-activity2'] {    
+    mask-image:  url(../assets/img/tab-icons/ico-scan.svg);    
+  }  
+}
+
+.button-standard {
+  width:  90%;
+  max-width:  300px;
+  margin-left:  auto;
+  margin-right:  auto;
+  display:  flex;
+  min-height:  57px;
+  margin-top:  1.5rem;
+  margin-bottom:  1.5rem;
+  border-radius:  5px;
+  box-shadow:  none;
+  font-weight:  400;
+  font-size:  18px;
+
+  .button-inner {
+    padding:  2px;
+  }
+
+  span {
+    @extend .two-lines;
+  }
+}
+
+.button-default {
+  color:  white;
+}
+
+.button-secondary {
+  background-color:  #ededed;
+  color:  black;
+
+  &:hover,
+  &:focus,
+  &:active {
+    &.button-md,
+    &.button-ios {
+      background-color:  #ededed;
+      color:  black;
+      box-shadow:  none;
+    }
+  }
+
+  &:active,
+  &.activated {
+    &.button-md,
+    &.button-ios {
+      background-color:  #e5e5e5;
+    }
+  }
+}
+
+.btn-transparent {
+  border:  0px !important;
+  background-color:  color($colors, secondary);
+  color:  color($colors, primary);
+  -webkit-box-shadow:  none;
+  -moz-box-shadow:  none;
+  box-shadow:  none;
+}
+
+.alertDanger {
+  .alert-message {
+    color:  color($colors, danger);
+  }
+}
+
+// https: //github.com/ionic-team/ionic/pull/14241
+ion-alert .alert-message {
+  overflow-y:  auto;
+}
+
+.mdToastAfterHeader {
+  top:  $toolbar-md-height;
+}
+
+.iosToastAfterHeader {
+  top:  $toolbar-ios-height;
+}
+
+.hide-tabbar {
+  .tabbar {
+    display:  none !important;
+  }
+
+  .fullscreen-tab {
+    .scroll-content {
+      margin-bottom:  0 !important;
+    }
+  }
+}
+
+.header-extend {  
+  //background:  $toolbar-background; //**GC    
+  height:  0px; //**GC edit      
+  position:  absolute;     
+  top:  -100px;      
+  width:  100%;      
+  z-index:  0;     
+  display:  flex;      
+  justify-content:  center;      
+  .no-wallets {   
+    position:  absolute;   
+    top:  60%;   
+  }   
+} 
+
+/*    
+OVERRIDE for the new APP //GC edit      
+*/      
+
+//**Overriding top header banner height     
+.header-extend {      
+  height:  0px;    
+}   
+//**Overriding ion-icon's bottom navbar icons for selected state    
+.tabbar {   
+  .tab-button[aria-selected='true'],    
+  .tab-button:active,   
+  .tab-button:visited,    
+  .tab-button:focus {   
+    ion-icon {    
+      // custom icons   
+      &[class*='tab-home'] {    
+        mask-image:  url(../assets/img/tab-icons/ico-home-selected.svg);   
+        background-image:  url(../assets/img/tab-icons/ico-home-selected.svg);   
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+      &[class*='tab-receive'] {   
+        mask-image:  url(../assets/img/tab-icons/ico-receive-selected.svg);    
+        background-image:  url(../assets/img/tab-icons/ico-receive-selected.svg);    
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+      &[class*='tab-scan'] {    
+        mask-image:  url(../assets/img/tab-icons/ico-scan-selected.svg);   
+        background-image:  url(../assets/img/tab-icons/ico-scan-selected.svg);   
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+        width:  3rem !important;   
+      }   
+      &[class*='tab-send'] {    
+        mask-image:  url(../assets/img/tab-icons/ico-send-selected.svg);   
+        background-image:  url(../assets/img/tab-icons/ico-send-selected.svg);   
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+      &[class*='tab-settings'] {    
+        mask-image:  url(../assets/img/tab-icons/ico-settings-selected.svg);   
+        background-image:  url(../assets/img/tab-icons/ico-settings-selected.svg);   
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+      &[class*='tab-activity2'] {    
+        mask-image:  url(../assets/img/tab-icons/ico-scan-selected.svg);   
+        background-image:  url(../assets/img/tab-icons/ico-scan-selected.svg);   
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+      &[class*='tab-login'] {   
+        mask-image:  url(../assets/img/tab-icons/ico-login-selected.svg);    
+        background-image:  url(../assets/img/tab-icons/ico-login-selected.svg);    
+        background-repeat:  no-repeat;   
+        background-position:  center;    
+      }   
+    }   
+  }   
+}
+
+//**Overriding the item-md button   
+.item-md {      
+  padding-top:  5px;     
+  padding-bottom:  5px;    
+  border-bottom:  1px solid #ececec;   
+}   
+//**To get rid of the bottom border for the button lists      
+.list-md .item-block .item-inner {        
+  border-bottom:  0px;   
+}   
+//**To give white border bottom effect on any background    
+// this ion-header override has to come here before 'page-home ion-header' style override as below    
+ion-header {    
+  box-shadow:  0 2px 2px white;    
+}   
+//**To give the header's bottom border effect by puttin the border on top of the wrapper div so that when the refresher happens, it still gives the border moving down with the dark blue background    
+page-home {   
+  .scroll-content {   
+    .wrapper {    
+      border-top:  6px solid rgb(245, 245, 245); // **GC v2 Edit; got rid of the borderbottom attached to scroll-content   
+      margin-top:  0px;    
+      padding-top:  0px;   
+    }   
+  }   
+  ion-header {    
+    box-shadow:  0 0px 0px;    
+  } 
+}
+
+
+// **GCEdit:  IMPORTANT!! To change reorder's icon (only) to "move" icon when reorder function is called since that seems more understandable
+.ion-ios-reorder:before {
+  content:  '\f331';
+}
+.ion-ios-reorder-outline:before {
+  content:  '\f331';
+}
+.ion-md-reorder:before {
+  content:  '\f331';
+}
+
+// **To change the whole default font family for this app
+ion-app.ios,
+ion-app.md,
+ion-app.wp {
+  font-family:  'Proxima Nova', 'Helvetica Neue', sans-serif;
+}
+
+// **to give more space on the top and less space on the bottom for page-settings's label
+.item-divider .input-wrapper .label-md,
+ion-app.ios page-settings .item-divider .label,
+ion-app.md page-settings .item-divider .input-wrapper .label-md,
+ion-app.wp page-settings .item-divider .input-wrapper .label-md {
+  margin:  25px 8px 8px 0;
+  font-size:  14px;
+}
+// **But, not for the first line of label
+.item-divider:first-child .input-wrapper .label-md,
+ion-app.ios page-settings .item-divider:first-child .label,
+ion-app.md page-settings .item-divider:first-child .input-wrapper .label,
+ion-app.wp page-settings .item-divider:first-child .input-wrapper .label {
+  margin-top:  8px;
+  margin-bottom:  8px;
+}
+
+// **Some places use ion-item tag directly to make list/label effect. For this, we give padding to it
+ion-item,
+ion-app.ios ion-item,
+ion-app.md ion-item,
+ion-app.wp ion-item,
+ion-app.ios button[ion-item],
+ion-app.md button[ion-item],
+ion-app.wp button[ion-item],
+.item-md,
+ion-app.ios page-settings button.item,
+ion-app.md page-settings button.item,
+ion-app.wp page-settings button.item {
+  padding-top:  8px;
+  padding-bottom:  8px;
+}
+
+// **Top toolbar font size to be a bit bigger
+.toolbar-title-md,
+ion-app.ios .toolbar-title,
+.md .toolbar-title-md,
+.wp .toolbar-title-md {
+  font-size:  2.2rem; // **GC v2 Edit
+  font-weight:  600; // **GC v2 Edit
+}
+
+// **GCEdit:  CUSTOME style for small font
+.gcwallet_sm-font {
+  font-size:  14px;
+}
+
+// **GC v2 Edit:  Header color (hook into all toolbar-background and not the outer tags otherwise it wont get affected)
+.toolbar-background,
+.toolbar-background-ios,
+.toolbar-background-md {
+  background:  $color-primary;
+}
+
+#ion-diagnostics-toast {
+  background:  $color-primary;
+}
+
+.toolbar,
+.toolbar-md {
+  border-bottom:  5px solid $color-secondary;
+}
+
+.toolbar-ios {
+  min-height:  46px;
+}
+.platform-windows {
+  page-home {
+    text-align:  center;
+    img.home-logo {
+      margin:  0 auto;
+    }
+  }
+}
+
+
+// start of new import
+
+// mixin in all App
+@mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    ::-webkit-textarea-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+};
+@mixin whiteNormal($height,$lineNum){
+    white-space:  normal; 
+    max-height:  $height;
+    line-height:  $height / $lineNum;
+    display:  block;
+    overflow:  hidden;
+}
+@mixin whiteNoWrap($height){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:  $height;
+    line-height:  $height;
+    display:  block;
+}
+@mixin centerHeight($height){
+    display: inline-block;
+    height: $height;
+    width:  $height;
+    line-height: $height;
+    min-height:  $height;
+    text-align: center;
+}
+@mixin borderRadius($height){
+    @include centerHeight($height);
+    border-radius: 50%;
+}
+@mixin position($top,$right,$bottom,$left){
+    position: absolute;
+    top: $top;
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+}
+
+
+@include placeholder {
+    color: $inputPlaceHolderColor ;
+    font-weight:500;
+}
+
+.appForm{   
+    @include placeholder {    
+        color:  $inputPlaceHolderColor ;   
+        font-weight: 500;    
+    }   
+    display:  inline-block;    
+    width:  100%;    
+    .select-icon{   
+        @include borderRadius($appInputHeight - ($mainMarg + 2px));   
+        background: color($colors,color2);   
+        margin: $mainMarg/2 + 1 0px !important;    
+        .select-icon-inner{   
+            @include position(2px,0px,0px,0px);   
+            margin: auto;    
+            color:  color($colors,semilight);    
+        }   
+    }
+}
+
+.item-range{     
+    .range-knob-handle{   
+        display: none;   
+    }
+}
+
+.myTitle{
+    @include whiteNormal(20px,1);
+    color:  color($colors,color1);
+    font-size: $mainFont - .1;
+    margin: 0px;
+    font-weight: 500;
+    text-transform: none;
+}
+
+.myLabel{
+    color: color($colors,color2)!important;
+    font-weight: 500;
+    @include whiteNormal(14px, 1);
+    margin: $mainMarg/2 0px;
+}
+
+.result{
+    @include whiteNormal(20px,1);
+    font-size: 1.5rem!important;
+    font-weight: bold;
+    color:  color($colors,color1);
+    text-align: center;
+    text-decoration: underline;
+}
+
+ion-menu{
+    &.show-menu{
+        top: $toolbar-ios-height + $mainMarg/2;
+        left: $mainMarg/2;
+        height:  85%;
+        .show-backdrop{
+            opacity:  0!important;
+        }
+        .menu-inner{
+            max-width: 85%;
+           
+            .footer{
+                padding: 0px 30px;
+            }
+        }
+    }
+}
+
+.searchItem{
+    background:  color($colors,semilight)!important;
+    border-radius: $appFormRadius;
+    @extend %boxShadow;
+    height:  $appInputHeight;
+    .icon{
+        &[item-right]{
+            margin: 0pc $mainMarg;
+            color:  color($colors,color2);
+            font-size: 2.2rem;
+            height:  $appInputHeight;
+            line-height: $appInputHeight;
+        }
+    }
+}
+
+.acountTitle{
+    @extend .myTitle;
+    max-height:  16*3px;
+    margin-bottom: $mainMarg;
+    display:  flex;
+    flex-wrap:  wrap;
+    span{
+        @include whiteNormal(16px,1);
+    }
+    .countNum{
+        margin:  0px 3px;
+        height:  16px;
+        line-height:  16px;
+    }
+}
+.countNum{
+    color:  color($colors,color3);
+    position: relative;
+    letter-spacing: .1rem;
+    display: inline-flex!important;
+    span{
+        color:  color($colors,color2);
+    }
+}
+
+
+.section-header {
+  color:  rgba(0, 0, 0, 0.3);
+  font-weight:  600;
+  margin:  0 auto;
+  margin-bottom:  -7px;
+  width:  92%;
+}
+
+button.modal-close-button {
+  font-size:  16px;
+  font-weight:  400;
+
+  ion-icon {
+    font-size:  26px;
+  }
+}
+
+.qr-container {
+  flex-grow:  1;
+  @include center;
+  background:  linear-gradient(#ececec, white);
+
+  .qr-placeholder {
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+  }
+
+  .qr-card {
+    border:  1px solid rgb(207, 207, 207);
+    border-radius:  7px;
+    transform:  translateY(0);
+    margin:  0;
+    padding-bottom:  0;
+    width:  70%;
+    max-width:  293px;
+    max-height:  293px;
+    box-shadow:  none;
+
+    .aclass {
+      @include center;
+      padding:  5px;
+    }
+
+    .aclass > img {
+      filter:  grayscale(100%);
+      height:  100%;
+      width:  100%;
+      opacity:  0.715;
+    }
+  }
+
+  .qr-placeholder:after {
+    content:  '';
+    display:  block;
+    padding-bottom:  100%;
+  }
+}
+
+
+// Padding
+[padding]{
+    padding: $mainMarg!important;
+    .scroll-content{
+        padding: $mainMarg!important; 
+    }
+}
+//Style of img Background
+.imgBg{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;  
+}
+
+// box shadow
+%boxShadow{
+    box-shadow:  3px 3px 3px 0px rgba(0,0,0,0.18);
+    margin:  0px 2px 3px 0px;
+    width: calc(100% - 2px);
+}
+
+.address-divider {
+  width:  1px;
+  height:  25px;
+  background-color:  rgb(227, 227, 227);
+  display:  inline-block;
+  margin-left:  6px;
+  margin-right:  12px;
+  vertical-align:  middle;
+}
+
+// Add padding bottom when item has label
+ion-item.with-label.item {
+  padding-bottom:  10px;
+
+  &.item-ios,
+  &.item-md {
+    .item-inner {
+      border-bottom:  0;
+    }
+  }
+}
+
+// avoid issue with box-shadow and floating labels
+.ng-valid .item-inner,
+.ng-invalid .item-inner,
+.item-input-has-focus .item-inner {
+  box-shadow:  none !important;
+}
+
+.slide-confirm-down {
+  transform:  translate(0px, 90px);
+}
+
+.slide-confirm-slow {
+  transition:  transform 0.7s;
+}
+
+.slide-confirm-fast {
+  transition:  transform 0.3s;
+}
+
+.reorder-done {
+  color:  color($colors, primary);
+}
+
+.reorder-button {
+  display:  flex;
+  position:  relative;
+
+  &:after {
+    // For easier tappability
+    content:  '';
+    position:  absolute;
+    height:  30px;
+    width:  40px;
+    top:  -10px;
+    left:  -10px;
+  }
+}
+
+.app-color {
+  .toolbar-background {
+    background:  #14245e !important;
+  }
+}
+
+page-wallet-details,
+page-receive,
+page-send,
+page-amount,
+page-multi-send,
+page-bitpay-card-intro,
+page-bitpay-card,
+page-shapeshift,
+.wallet-details-header {
+  @include toolbar-button-color(white);
+
+  ion-title .toolbar-title {
+    color:  color($colors, light);
+    font-weight:  75;
+  }
+
+  button.modal-close-button.bar-button {
+    margin-top:  -1px;
+    color:  white;
+  }
+  ion-title {
+    &.title-ios {
+      padding:  0 50px 1px;
+    }
+    .toolbar-title {
+      text-align:  left;
+      opacity:  0.7;
+      font-weight:  600;
+    }
+  }
+
+  &:not(.no-subtitle) {
+    ion-title .toolbar-title {
+      font-weight:  100;
+      font-size:  16px;
+    }
+  }
+
+  ion-toolbar {
+    min-height:  0;
+    margin-top:  -6px;
+
+    &.toolbar-md {
+      padding-top:  0;
+    }
+  }
+
+  &__balance,
+  &__balance-hidden,
+  &__subtitle {
+    text-align:  left;
+    color:  white;
+    padding-bottom:  10px;
+    font-size:  18px;
+    font-weight:  500;
+    margin-left:  4.5rem;
+
+    ion-icon {
+      font-size:  16px;
+      font-weight:  100;
+      margin-left:  5px;
+    }
+  }
+}
+
+.icon-plus {
+  -webkit-mask-box-image:  url(../assets/img/icon-plus.svg);
+  height:  18px;
+  width:  18px;
+  background-color:  #cdd1d8;
+  mask-repeat:  no-repeat;
+  mask-position:  50% 50%;
+  mask-size:  2rem;
+  margin:  auto;
+  transform:  translate(0, -10%);
+}

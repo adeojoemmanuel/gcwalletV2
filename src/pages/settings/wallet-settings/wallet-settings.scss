@@ -1,0 +1,21 @@
+page-wallet-settings {
+  .assertive {
+    color: color($colors, danger);
+
+    ion-label {
+      white-space: inherit;
+    }
+  }
+
+  .item-text {
+    font-size: 12.5px;
+  }
+
+  ion-item-divider.item.item-divider {
+    padding-left: 16px;
+  }
+
+  .item-without-title {
+    margin-top: 0;
+  }
+}

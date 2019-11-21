@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="ios-menu" style="color: black;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Transactions Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <!-- account name , number and currancy -->
+  <div class="acountTitle"> 
+    <span>Hello,</span>
+
+    <p class="countNum">
+      {{ userid }}</p>
+     <!-- <span>8134964,</span>
+      12345
+    </p>
+
+    <span>33324 $</span>-->
+  </div>
+  <!-- Transaction Details -->
+  <div class="details">
+    <p class="myLabel">TRANSACTIONS DETAILS</p>
+    <ion-grid>
+      <p *ngIf="toShowMap">
+        <iframe
+          width="100%"
+          height="350"
+          frameborder="0"
+          style="border:0"
+          [src]="googleUrl | safe"
+          allowfullscreen
+        ></iframe>
+      </p>
+      <ion-row *ngIf="toShowMap">
+        <ion-col col-4 text-left>
+          <p>Location</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ data.street }}, {{ data.city }}, {{ data.state }} {{ data.zipcode }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Amount</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p><span>{{ getCurrency(transdata.currency_fiat) }}</span> {{ getAmount(transdata.amount_fiat) }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Transaction Date</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ convertdate(transdata.created_at) | date:'MM-dd-yyyy'}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Amount In {{getCurrencyCrypto(transdata.currency_crypto)}}</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{transdata.amount_crypto/100000000}} {{getCurrencyCrypto(transdata.currency_crypto)}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Address</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <!-- (click)="gotoaddress( transdata.currency_crypto, transdata.address )" -->
+          <!-- {{ (transdata.address.length>25)? (transdata.address | slice:0:25)+'..':(transdata.address) }} -->
+          <p (click)="gotoaddress( transdata.currency_crypto, transdata.address )"> {{ transdata.address }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Transaction Type</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ getTransactionType(transdata.type)}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Transaction Crypto</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ getFullCurrencyCrypto(getCurrencyCrypto(transdata.currency_crypto)) }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="transdata.txid">
+        <ion-col col-4 text-left>
+          <p>Transaction ID</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p (click)="gototxid(transdata.currency_crypto, transdata.txid)">{{transdata.txid}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>ATM Trasaction ID</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{transdata.shortcode}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>ATM Status</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ getStatus(transdata.status) }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 text-left>
+          <p>Blockchain Status</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ getBlockChainStatus(transdata.confirmations) }}</p>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        <ion-col col-8 text-left>
+          <a href="#" (click)="reportTransaction()"><p>Report This Transaction</p></a>
+        </ion-col>
+      </ion-row> -->
+      <ion-row center>  
+       <ion-col text-center>   
+           <a href="#" (click)="reportTransaction()" style="color:red;"><p>Report This Transaction</p></a>
+       </ion-col> 
+      </ion-row>
+      
+    </ion-grid>
+  </div>
+</ion-content>
