@@ -2,8 +2,8 @@
   "//-": "Changes to this file will be overwritten.",
   "//--": "Modify it's template in the app-template directory.",
 
-  "name": "Copay Bitcoin Wallet",
-  "short_name": "Copay",
+  "name": "GetCoins Secure Bitcoin Wallet",
+  "short_name": "GetCoins",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [
@@ -13,6 +13,6 @@
       "type": "image/png"
     }
   ],
-  "background_color": "#192c3a",
-  "theme_color": "#192c3a"
+  "background_color": "#f79420",
+  "theme_color": "#f79420"
 }

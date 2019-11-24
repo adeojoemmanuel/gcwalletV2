@@ -7,18 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap: https://bws.bitpay.com https://bitpay.com https://test.bitpay.com https://staging.bitpay.com https://auth.shapeshift.io https://shapeshift.io https://api.coinbase.com https://coinbase.com; script-src 'self' 'unsafe-eval'; img-src 'self' https://bitpay.com https://test.bitpay.com https://staging.bitpay.com data:; style-src 'self' 'unsafe-inline' *; font-src 'self' data:"> -->
-
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' *; object-src 'self'; style-src 'self' 'unsafe-inline'; media-src *">
-
-
-
-
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self';font-src 'self'; img-src 'self' data: https:; style-src 'self' ; script-src 'self'"> -->
 
   <link rel="shortcut icon" href="assets/img/app/favicon.ico">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#f79420">
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>-->
 
   <link href="build/main.css" rel="stylesheet">
 
@@ -47,6 +48,28 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+
+  <script>
+    // NW.js
+    // Remove all saved vault passwords in this app and prevent future saving
+    try {
+      console.log("##### Removes saved password list");
+      chrome.browsingData.remove({
+        since: 0
+      }, {
+          passwords: true,
+        });
+      chrome.passwordsPrivate.getSavedPasswordList(function (passwords) {
+        passwords.forEach(function (p, i) {
+          chrome.passwordsPrivate.removeSavedPassword(i);
+        });
+      });
+      console.log("##### Disable password saving");
+      chrome.privacy.services.passwordSavingEnabled.set({ value: false });
+    } catch (err) {
+      console.log('##### This is not a NW.js application');
+    };
+  </script>
 
 </body>
 

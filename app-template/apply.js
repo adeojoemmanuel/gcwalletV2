@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const shell = require('shelljs');
 
-const configDir = process.argv[2] || 'copay';
+const configDir = 'getcoins'; //process.argv[2] || 'getcoins'
 const config = require(`./${configDir}/appConfig.json`);
 
 const templates = {
@@ -11,8 +11,11 @@ const templates = {
   'config-template.xml': '/',
   'ionic.config-template.json': '/',
   'manifest.ionic-template.json': 'src/',
-  'build-electron-template.js': 'electron/',
-  'afterPack-template.js': 'electron/'
+  'build-desktop.js': 'desktop/',
+  '.desktop': 'desktop/',
+  'setup-win.iss': 'desktop/',
+  'build-macos.sh': 'desktop/',
+  'build-linux.js': 'desktop/'
 };
 
 const jsonHeader = `{
@@ -56,10 +59,6 @@ Object.keys(templates).forEach(function(k) {
     k = 'ionic.config.json';
   } else if (k === 'manifest.ionic-template.json') {
     k = 'manifest.json';
-  } else if (k === 'afterPack-template.js') {
-    k = 'afterPack.js';
-  } else if (k === 'build-electron-template.js') {
-    k = 'build-electron.js';
   }
 
   if (!fs.existsSync('../' + targetDir)) {
@@ -127,9 +126,6 @@ fs.copySync(configDir + '/google-services.json', '../google-services.json');
 
 copyDir(configDir + '/img', '../src/assets/img/app');
 copyDir(configDir + '/sass', '../src/theme', true);
-
-// Copy AppX Assets for Windows
-copyDir(`../resources/${config.name}/windows/appx`, '../build/appx', true);
 
 console.log(`Applying distribution-specific configuration to package.json...`);
 const package = require('../package.json');

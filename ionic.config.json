@@ -2,8 +2,8 @@
   "//-": "Changes to this file will be overwritten.",
   "//--": "Modify it's template in the app-template directory.",
 
-  "name": "Copay",
-  "app_id": "com.bitpay.copay",
+  "name": "GCWallet",
+  "app_id": "com.getcoins.gcwallet",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

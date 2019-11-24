@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=2.0.0
+Name=GCWallet
+Comment=GetCoins' Bitcoin Wallet
+Exec=GCWallet
+Icon=icon.png
+Terminal=false
+Categories=Finance
+X-Ubuntu-Touch=true
+X-Ubuntu-StageHint=SideStage
