@@ -1,11 +1,10 @@
 {
-  "//-": "Changes to this file will be overwritten.",
-  "//--": "Modify it's template in the app-template directory.",
-
   "name": "GCWallet",
-  "app_id": "com.getcoins.gcwallet",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "//-": "Changes to this file will be overwritten.",
+  "//--": "Modify it's template in the app-template directory.",
+  "id": "com.getcoins.gcwallet"
 }
