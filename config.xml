@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="iosPersistentFileLocation" value="Library" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
@@ -120,6 +120,7 @@
         <splash density="port-xxhdpi" src="resources/getcoins/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/getcoins/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
+    <plugin name="im.ltdev.cordova.UserAgent" spec="git+https://github.com/danielsogl/cordova-plugin-useragent.git" />
     <engine name="android" spec="7.1.4" />
-    <engine name="ios" spec="^4.5.5" />
+    <engine name="ios" spec="4.5.5" />
 </widget>
