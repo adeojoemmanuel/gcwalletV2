@@ -20,8 +20,8 @@ import { Logger } from '../../providers/logger/logger';
 @Injectable()
 export class LoginProvider {
   private websitejson: string;
-  private locurl: string;
-  private locurlForBrowser: string;
+  // private locurl: string;
+  // private locurlForBrowser: string;
   private apiurl;
   public results: Object[];
   public newResults: any;
@@ -44,8 +44,8 @@ export class LoginProvider {
     // this.apiurl =  'https://api.customer-portal.getcns.tech';
     this.apiurl =  'https://api.customer-portal.dev.getcns.tech';
     this.transactionsurl = 'https://api.customer-portal.getcns.tech/transactions';
-    this.locurl = 'assets/identloc.json';
-    this.locurlForBrowser = '../../../../assets/identloc.json';
+    // this.locurl = 'assets/identloc.json';
+    // this.locurlForBrowser = '../../../../assets/identloc.json';
     // this.reporturl = 'https://api.customer-portal.getcns.tech/ticket';
     this.reporturl = 'https://api.customer-portal.dev.getcns.tech/ticket';
     this.zendeskData = 'https://getcoins.zendesk.com/api/v2/tickets';

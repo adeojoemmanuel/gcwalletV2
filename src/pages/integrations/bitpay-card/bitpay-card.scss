@@ -1,5 +1,5 @@
 page-bitpay-card {
-  $bitpay-card-primary-color: #2a3f90;
+  $bitpay-card-primary-color: #f79420;
 
   .toolbar-background {
     background: $bitpay-card-primary-color;
@@ -17,7 +17,7 @@ page-bitpay-card {
 
   .balance-card {
     //background: $bitpay-card-primary-color;
-    background: linear-gradient(180deg, #14245e -0%, #22378c);
+    background: linear-gradient(180deg, #f79420 -0%, #f79420);
   }
 
   .balance-header {

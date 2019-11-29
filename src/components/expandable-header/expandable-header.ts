@@ -120,7 +120,7 @@ export class ExpandableHeaderComponent {
 
     backColorGradient = this.calculateBackColorGradient(opacity);
 
-    const linearGradient = `linear-gradient(180deg, #14245E ${backColorGradient}% , #22378c)`;
+    const linearGradient = `linear-gradient(180deg, #f79420 ${backColorGradient}% , #f79420)`;
 
     this.renderer.setElementStyle(
       this.element.nativeElement,

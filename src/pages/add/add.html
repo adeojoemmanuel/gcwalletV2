@@ -1,4 +1,10 @@
-<wide-header-page title="{{'Add Wallet' | translate}}">
+<ion-header>  
+  <ion-navbar>
+    <ion-title>{{'New wallet' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- <wide-header-page title="{{'Add Wallet' | translate}}"> -->
+<ion-content no-bounce>
   <div page-content>
     <ion-list class="settings-list bp-list">
       <button class="list-button" ion-item (click)="goToAddWalletPage(false, false, true)">
@@ -31,4 +37,5 @@
       </button>
     </ion-list>
   </div>
-</wide-header-page>
+</ion-content>
+<!-- </wide-header-page> -->

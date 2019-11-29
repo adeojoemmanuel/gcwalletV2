@@ -93,7 +93,8 @@
       </ion-card-content>
     </ion-card>
     <!-- {{profileProvider.getWalletGroup(walletGroup[0].keyId).name}} -->
-    <div class="card">
+    <!-- {{walletsGroups}} -->
+    <div class="card"  *ngIf="walletsGroups.length > 0">
      <!-- <div class="card"> -->
         <ion-item-divider>
           <div class="title" item-start>

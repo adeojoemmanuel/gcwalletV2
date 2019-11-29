@@ -13,7 +13,7 @@ import { WalletTabsProvider } from './wallet-tabs.provider';
 
 @Component({
   template: `
-    <ion-tabs [selectedIndex]="selectedTabIndex" #tabs>
+    <ion-tabs class="hide-tabbar" [selectedIndex]="selectedTabIndex" #tabs>
       <ion-tab
         [root]="receiveRoot"
         tabTitle="{{'Receive'|translate}}"

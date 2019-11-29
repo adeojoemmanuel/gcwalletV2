@@ -5,10 +5,14 @@ import {
   ModalController,
   NavController,
   NavParams,
-  Platform
+  Platform,
+  AlertController
 } from 'ionic-angular';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
+import * as moment from 'moment';
+import {Observable} from 'rxjs/Rx';
+import { Http } from '@angular/http';
 
 // providers
 import { AddressBookProvider } from '../../providers/address-book/address-book';
@@ -50,6 +54,7 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   public requiresMultipleSignatures: boolean;
   public wallet;
+  public wallet2;
   public history = [];
   public groupedHistory = [];
   public walletNotRegistered: boolean;
@@ -68,6 +73,9 @@ export class WalletDetailsPage extends WalletTabsChild {
 
   public supportedCards: Promise<CardConfigMap>;
 
+  public btc_api_data;
+  public btc_api_time;
+
   constructor(
     private currencyProvider: CurrencyProvider,
     navCtrl: NavController,
@@ -85,7 +93,9 @@ export class WalletDetailsPage extends WalletTabsChild {
     private externalLinkProvider: ExternalLinkProvider,
     walletTabsProvider: WalletTabsProvider,
     private actionSheetProvider: ActionSheetProvider,
-    private platform: Platform
+    private http:Http,
+    private platform: Platform,
+    public alertCtrl: AlertController
   ) {
     super(navCtrl, profileProvider, walletTabsProvider);
     this.zone = new NgZone({ enableLongStackTrace: false });
@@ -98,7 +108,6 @@ export class WalletDetailsPage extends WalletTabsChild {
     } else {
       if (this.wallet.completeHistory) this.showHistory();
     }
-
     this.requiresMultipleSignatures = this.wallet.credentials.m > 1;
     this.supportedCards = this.giftCardProvider.getSupportedCardMap();
 
@@ -135,6 +144,10 @@ export class WalletDetailsPage extends WalletTabsChild {
     this.events.publish('Local/WalletFocus', {
       walletId: this.wallet.credentials.walletId
     });
+
+    this.wallet2 = this.profileProvider.getWallet(this.wallet.credentials.walletId);
+    console.log(this.wallet2);
+    this.getCurrentbtcPrice();
   }
 
   ionViewWillUnload() {
@@ -164,6 +177,83 @@ export class WalletDetailsPage extends WalletTabsChild {
   private clearHistoryCache() {
     this.history = [];
     this.currentPage = 0;
+  }
+
+  public onWalletAction(wallet, action) {
+    const tabMap = {
+      receive: 0,
+      view: 1,
+      send: 2
+    };
+    const selectedTabIndex = tabMap[action];
+    this.goToWalletDetails(wallet, { selectedTabIndex });
+  }
+
+ public goToWalletDetails(wallet, params): void {
+    this.events.publish('OpenWallet', wallet, params);
+  }
+
+  public  searchWallet() {
+    this.updateStatusError = null;
+    this.wallet.scanning = true;
+    this.walletProvider.startScan(this.wallet).then(status => {
+      this.onGoingProcessProvider.clear();
+      setTimeout(() => {
+        this.walletProvider.startScan(this.wallet).then(() => {
+          this.updateAll(true);
+          // this.updateStatusError = false;
+          // this.wallet.scanning = status;
+        });
+      }, 3000);
+    }).catch(err => {
+      const alert = this.alertCtrl.create({
+        title: 'Some connection errors Occured',
+        subTitle: 'Sorry, lets retry!',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
+  }
+
+  public getCurrentbtcPrice(){
+    if(this.wallet.coin == "btc"){
+      console.log("we are in btc convertion")
+      this.http.get('https://api.cryptonator.com/api/ticker/btc-usd')
+      .map(res=>res.json())
+      .subscribe((data) => {
+        const rprice = this.wallet2.cachedStatus.availableBalanceStr.split(" ");
+        this.btc_api_data = data.ticker.price * rprice[0];
+        // this.btc_api_data = data.ticker.price * 0.043597;
+        this.btc_api_time = "a few seconds ago";
+        /* tslint:disable:no-unused-variable */
+        Observable.interval(10000).subscribe(x => { // will execute every 30 seconds
+          const d = new Date(data.timestamp * 1000);
+          // let myMoment: moment.Moment = moment(d).fromNow();
+          let myMoment:string = moment(d).fromNow();
+          this.btc_api_time = myMoment;
+          this.logger.info(this.btc_api_time);
+        });
+      });
+    }else if(this.wallet.coin == "bch"){
+      console.log("we are in bch converstion")
+      this.http.get('https://api.cryptonator.com/api/ticker/bch-usd')
+      .map(res=>res.json())
+      .subscribe((data2) => {
+          const rprice = this.wallet2.cachedStatus.availableBalanceStr.split(" ");
+          this.btc_api_data = data2.ticker.price * rprice[0];
+          // this.btc_api_data = data2.ticker.price * 0.043597;
+          this.btc_api_time = "a few seconds ago";
+          /* tslint:disable:no-unused-variable */
+          Observable.interval(10000).subscribe(x => { // will execute every 30 seconds
+            const d = new Date(data2.timestamp * 1000);
+            // let myMoment: moment.Moment = moment(d).fromNow();
+            let myMoment:string = moment(d).fromNow();
+            this.btc_api_time = myMoment;
+            this.logger.info(this.btc_api_time);
+          });
+          
+      });
+    }
   }
 
   private groupHistory(history) {

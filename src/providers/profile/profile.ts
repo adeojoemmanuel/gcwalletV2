@@ -642,7 +642,7 @@ export class ProfileProvider {
   private addAndBindWalletClients(data, opts): Promise<any> {
     // Encrypt wallet
     this.onGoingProcessProvider.pause();
-    return this.askToEncryptKey(data.key).then(() => {
+    // return this.askToEncryptKey(data.key).then(() => {
       this.onGoingProcessProvider.resume();
       const promises = [];
       data.walletClients.forEach(walletClient => {
@@ -662,7 +662,7 @@ export class ProfileProvider {
             return Promise.reject('failed to bind wallets');
           });
       });
-    });
+    // });
   }
 
   private checkIfAlreadyExist(walletClients: any[]): Promise<any> {
@@ -799,7 +799,7 @@ export class ProfileProvider {
   public importFile(str: string, opts): Promise<any> {
     return this._importFile(str, opts).then(data => {
       this.onGoingProcessProvider.pause();
-      return this.askToEncryptKey(data.key).then(() => {
+      // return this.askToEncryptKey(data.key).then(() => {
         this.onGoingProcessProvider.resume();
         return this.keyProvider.addKey(data.key).then(() => {
           return this.addAndBindWalletClient(data.walletClient, {
@@ -815,7 +815,7 @@ export class ProfileProvider {
             });
           });
         });
-      });
+      // });
     });
   }
 
@@ -1409,9 +1409,10 @@ export class ProfileProvider {
     return this.keyProvider.handleEncryptedWallet(opts.keyId).then(password => {
       opts.password = password;
       return this._createWallet(opts).then(data => {
+        console.log(addingNewWallet)
         // Encrypt wallet
         this.onGoingProcessProvider.pause();
-        return this.askToEncryptKey(data.key, addingNewWallet).then(() => {
+        // return this.askToEncryptKey(data.key, addingNewWallet).then(() => {
           this.onGoingProcessProvider.resume();
           return this.keyProvider.addKey(data.key).then(() => {
             return this.addAndBindWalletClient(data.walletClient, {
@@ -1423,7 +1424,7 @@ export class ProfileProvider {
               });
             });
           });
-        });
+        // });
       });
     });
   }
@@ -1432,9 +1433,10 @@ export class ProfileProvider {
     return this.keyProvider.handleEncryptedWallet(opts.keyId).then(password => {
       opts.password = password;
       return this._joinWallet(opts).then(data => {
+        console.log(addingNewWallet);
         // Encrypt wallet
         this.onGoingProcessProvider.pause();
-        return this.askToEncryptKey(data.key, addingNewWallet).then(() => {
+        // return this.askToEncryptKey(data.key, addingNewWallet).then(() => {
           this.onGoingProcessProvider.resume();
           return this.keyProvider.addKey(data.key).then(() => {
             return this.addAndBindWalletClient(data.walletClient, {
@@ -1446,7 +1448,7 @@ export class ProfileProvider {
               });
             });
           });
-        });
+        // });
       });
     });
   }

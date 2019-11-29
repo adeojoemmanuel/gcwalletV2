@@ -16,11 +16,11 @@ card-catalog-page {
     }
 
     &__title {
-      color: black;
-      font-size: 25px;
-      font-weight: 500;
-      padding-top: 30px;
-      padding-bottom: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: 400;
+      padding-top: 10px;
+      padding-bottom: 10px;
       padding-left: 20px;
     }
 
@@ -55,12 +55,12 @@ purchased-cards-page {
   @include toolbar-button-color();
 
   ion-title .toolbar-title {
-    color: black;
+    color: white;
   }
 }
 
 @include toolbar-button-color();
 
 ion-title .toolbar-title {
-  color: black;
+  color: white;
 }

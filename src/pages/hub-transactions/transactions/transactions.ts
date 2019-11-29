@@ -71,6 +71,8 @@ export class TransactionsPage implements OnInit {
   public userid;
   public sub;
   public locationData;
+  public defaultLat;
+  public defaultLog;
 
   public pages: Array<{title: string, component: any,icon:any}>;
 
@@ -166,18 +168,24 @@ export class TransactionsPage implements OnInit {
     });
     alert.present();
   }
-
+ 
   public goToLocationDetails(loc_id, tdata, kiosk_id): void {
+    console.log(kiosk_id);
     this.loginProvider.getlocationslocal()
     .subscribe(data => {
       this.geolocation = data['locations'];
-      if(this.geolocation.find(x=>x.kiosk_id == kiosk_id) == undefined){
+      if(this.geolocation.find(x=>x.kiosk_id == kiosk_id) == undefined || this.geolocation.find(x=>x.kiosk_id == kiosk_id) == undefined){
         this.translng = 0;
         this.translng = 0;
         this.locationData = null;
+        this.defaultLat = null;
+        this.defaultLog = null; 
       }else{
         this.locationData = this.geolocation.find(x=>x.kiosk_id == kiosk_id);
+        this.defaultLat = this.locationData.lat;
+        this.defaultLog = this.locationData.lng;
       }
+      console.log(this.locationData)
       // this.location(kiosk_id);
       if (data == null) {
         return this.showATMLocationsError();
@@ -187,8 +195,8 @@ export class TransactionsPage implements OnInit {
         locationId: loc_id,
         dataSet: tdata,
         locdata: this.locationData,
-        lat: this.locationData.lat,
-        lng: this.locationData.lng
+        lat: this.defaultLat,
+        lng: this.defaultLog
         // geolocation: this.myLocation
       });
 
@@ -199,7 +207,7 @@ export class TransactionsPage implements OnInit {
         console.log(err);
     });
   }
-
+  
   public getLocalJsonInstead(locid) {
     this.loginProvider.getlocationslocal()
     .subscribe(data => {

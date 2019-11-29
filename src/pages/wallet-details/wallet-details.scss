@@ -1,174 +1,104 @@
 page-wallet-details {
-  $icon-width: 36px;
-
-  ion-refresher {
-    height: 120px;
-
-    &-content {
-      margin-top: -25px;
-    }
-
-    .refresher-pulling ion-icon {
-      color: white;
-    }
-
-    .refresher-refreshing {
-      .spinner-crescent circle,
-      .spinner-ios line {
-        stroke: white;
-      }
-    }
-  }
-
   ion-header,
   .toolbar-background {
     background-color: rgba(0, 0, 0, 0) !important;
-
     &:after {
       height: 0 !important;
     }
   }
-
   .search-icon {
     font-size: 2.5rem;
   }
-
   .balance-card {
-    // background: color($colors, primary);
-    background: linear-gradient(180deg, #14245e -0%, #22378c);
+    background: #ffa500;
     overflow: hidden;
   }
-
+  ion-refresher {
+    height: 120px;
+    background: $toolbar-background;
+    &-content {
+      margin-top: -25px;
+    }
+  }
   .balance-header {
-    position: relative;
     margin-top: 15px;
-    margin-left: 5rem;
-    height: 17rem;
+    height: 12rem;
     color: color($colors, light);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
   }
-
+  .tdiv {
+      padding: 10px 0;
+      border: none;
+      margin: 10px;
+      text-align: center;
+  }
   .balance-str {
     cursor: pointer;
     font-size: 32px;
     font-weight: 600;
-
-    @media (max-width: 350px) {
-      font-size: 28px;
-    }
   }
-
   .balance-alt-str {
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 14px;
     font-weight: 400;
-    opacity: 0.7;
   }
-
   .balance-hidden {
-    width: 100vw;
-    margin-left: -5rem;
-    text-align: center;
-
     .title {
       cursor: pointer;
       font-size: 20px;
       font-weight: 500;
     }
   }
-
   .balance-error {
-    width: 100vw;
-    margin-left: -5rem;
-    padding: 0rem 2rem;
-    text-align: center;
-
     .title {
       cursor: pointer;
       font-size: 20px;
       font-weight: 500;
     }
   }
-
   .balance-spendable {
     margin-top: 5px;
     font-size: 13px;
     cursor: pointer;
-    opacity: 0.7;
-
     ion-icon {
       vertical-align: text-bottom;
       margin-right: 5px;
     }
   }
-
   .balance-scanning {
-    width: 100vw;
-    margin-left: -5rem;
-    text-align: center;
-
     .title {
       font-size: 20px;
       font-weight: 500;
     }
   }
-
-  .fix-margin {
-    margin-top: -4.5rem;
-  }
-
   .history-wrapper {
-    padding: 0rem 1.3rem;
+    margin-top: 1.3rem;
   }
-
   .tx-history {
     .tx-history-header {
-      height: 5rem;
-      border-bottom: 0;
-      border-radius: 5px 5px 0 0;
-
-      .ng-star-inserted {
-        font-size: 18px;
-        font-weight: 600;
-        color: #444444;
-      }
-
       &--large {
         &.item {
+          margin-bottom: 3px;
           ion-label {
             font-size: 15px;
           }
         }
       }
-
       &.item {
         min-height: 26px;
-        background: $feather-dark;
-
         ion-label {
           margin: 0;
           font-size: 14px;
         }
-
         .item-inner {
           padding: 0 !important;
         }
       }
-
-      ion-label {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .txps-badge {
-        margin-right: 1rem;
-      }
     }
-
     .item-wrapper {
       &:last-child {
         .item-inner {
@@ -176,7 +106,6 @@ page-wallet-details {
         }
       }
     }
-
     .item {
       font-size: 16px;
       padding-left: 19px;
@@ -192,39 +121,24 @@ page-wallet-details {
         border-bottom: 1px solid color($colors, light);
       }
     }
-
     img {
-      width: $icon-width;
+      width: 35px;
     }
-
     .action {
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
     .amount {
       color: color($colors, dark);
-
       .received {
         color: color($colors, success);
       }
     }
-
     .date {
       font-size: 14px;
       margin-top: 8px;
-    }
-
-    .proposal-container {
-      .item .item-inner {
-        padding: 0 10px 0 0;
-      }
-
-      .date {
-        margin-top: 0px;
-      }
     }
   }
 
@@ -241,54 +155,43 @@ page-wallet-details {
     font-weight: 400;
     color: color($colors, light);
     display: block;
-    display: flex;
-    align-items: center;
     height: 3rem;
-    padding: 0 0.5rem 7rem 0;
-
+    padding: 0 5px;
     img {
       float: left;
-      margin-right: 3px;
+      margin-right: 4px;
     }
-
     .testnet {
       height: 2rem;
       width: 2rem;
       margin-top: 5px;
     }
-
     .testnet-text {
       color: color($colors, light);
       height: 3rem;
       width: 4rem;
     }
-
     .read-only {
       height: 3rem;
-      width: 1.8rem;
+      width: 2rem;
     }
-
     .read-only-text {
       height: 3rem;
       width: 5rem;
     }
-
     .auditable-text {
       height: 3rem;
       width: 4rem;
     }
-
     .custom-bws {
       height: 3rem;
       width: 3rem;
     }
-
     .encrypted {
       height: 1.6rem;
       width: 1.6rem;
       margin-top: 5px;
     }
-
     .wallet-type {
       display: block;
       float: left;
@@ -296,22 +199,11 @@ page-wallet-details {
       padding-top: 5px;
       font-size: 11px;
     }
-
-    .left-buttons {
-      flex-grow: 1;
-      padding-left: 1.3rem;
-      opacity: 0.5;
-    }
-
-    .search-button {
-      padding: 0 6px 0 0;
-    }
-
     ion-spinner {
-      margin: 0 1.3rem 0 0;
+      float: right;
       width: 20px;
       height: 20px;
-
+      margin: 5px 5px 0 0;
       * {
         stroke: color($colors, light);
       }
@@ -320,54 +212,25 @@ page-wallet-details {
 
   .icon-services {
     border-radius: 50%;
-    width: $icon-width;
-    height: $icon-width;
+    padding: 1px;
+    width: 36px;
+    height: 36px;
     box-shadow: none;
     border: 1px solid #d7d7d7;
   }
 
   .locked-balance.item {
-    background-color: color($background-colors, warning);
-    cursor: pointer;
-    border-radius: 0 0 5px 5px;
-
     .item-inner {
       padding-bottom: 5px;
       padding-top: 5px;
     }
-
-    .note {
-      text-align: end;
-    }
   }
-
   .total-locked-amount {
-    color: color($colors, warning);
+    color: color($colors, dark);
   }
-
   .total-alt-locked-amount,
   .double-spend {
     text-align: end;
     font-size: 12.5px;
-  }
-
-  .white-card {
-    background: white;
-    padding: 3rem 2rem;
-    border-radius: 5px;
-  }
-
-  .top-notification {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    margin: 0 10px 10px 0;
-    &.warning {
-      color: color($colors, warning);
-    }
-    ion-icon {
-      vertical-align: middle;
-      margin-left: 5px;
-    }
   }
 }

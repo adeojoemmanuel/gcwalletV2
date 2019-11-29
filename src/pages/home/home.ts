@@ -70,7 +70,7 @@ export class HomePage {
   @ViewChild('priceCard')
   priceCard;
   public wallets;
-  public walletsGroups;
+  public walletsGroups: any = [];
   public readOnlyWalletsGroup;
   public txpsN: number;
   public serverMessages: any[];
@@ -109,6 +109,7 @@ export class HomePage {
   public localJson: any;
   public myLocation: any; // **GCEdit: DO NOT CHANGE THE TYPE (unless you change the interface/scheme of the variable and test out the type throughout the code) */
   public warnToRefresh: boolean = false;
+  public showReorderBtc: boolean = false;
 
   constructor(
     private plt: Platform,
@@ -1147,6 +1148,10 @@ export class HomePage {
 
   public isCollapsed(keyId: string): boolean {
     return this.collapsedGroups[keyId] ? true : false;
+  }
+
+  private check(parames){
+    console.log(parames[0]);
   }
 
   public addWallet(fromEthCard?: boolean): void {

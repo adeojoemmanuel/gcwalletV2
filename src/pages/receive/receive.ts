@@ -103,12 +103,12 @@ export class ReceivePage extends WalletTabsChild {
   }
 
   public async setAddress(newAddr?: boolean, failed?: boolean): Promise<void> {
-    if (
-      !this.wallet ||
-      !this.wallet.isComplete() ||
-      (this.wallet.needsBackup && this.wallet.network == 'livenet')
-    )
-      return;
+    // if (
+    //   !this.wallet ||
+    //   !this.wallet.isComplete() ||
+    //   (this.wallet.needsBackup && this.wallet.network == 'livenet')
+    // )
+    //   return;
 
     this.loading = newAddr || _.isEmpty(this.address) ? true : false;
 

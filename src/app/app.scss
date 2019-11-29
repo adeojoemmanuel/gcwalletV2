@@ -1115,7 +1115,7 @@ ion-item.with-label.item {
 
 .app-color {
   .toolbar-background {
-    background:  #14245e !important;
+    background:  #f79420 !important;
   }
 }
 
@@ -1131,7 +1131,7 @@ page-shapeshift,
   @include toolbar-button-color(white);
 
   ion-title .toolbar-title {
-    color:  color($colors, light);
+    color:  #f4f4f4;
     font-weight:  75;
   }
 

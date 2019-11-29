@@ -120,7 +120,7 @@
         <splash density="port-xxhdpi" src="resources/getcoins/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/getcoins/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <plugin name="im.ltdev.cordova.UserAgent" spec="git+https://github.com/danielsogl/cordova-plugin-useragent.git" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.2" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
 </widget>
