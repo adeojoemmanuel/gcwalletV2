@@ -147,7 +147,6 @@
         <ion-list class="sliding-container wallets" [ngClass]="{'collapsed': isCollapsed(walletGroup[0].keyId)}">
           <div *ngFor="let wallet of walletGroup" class="wallet-wrapper">
             <ion-item-sliding #slidingItem>
-              <!-- <button *ngIf="wallet.coin === 'btc'" ion-item detail-none (click)="onWalletAction(wallet, 'view', slidingItem)"> -->
               <button ion-item detail-none (click)="onWalletAction(wallet, 'view', slidingItem)">
                 <wallet-item-content [wallet]="wallet"></wallet-item-content>
               </button>
@@ -165,13 +164,13 @@
               </ion-item-options>
             </ion-item-sliding>
           </div>
+          <label-tip [ngClass]="{'notificationcollapsed': isCollapsed(walletGroup[0].keyId)}" type="warn" *ngIf="walletGroup && walletGroup[0] && walletGroup[0].needsBackup" margin-top>
+            <span label-tip-title translate>Needs Backup</span>
+            <div label-tip-body>
+              <span translate>Before retrieving your wallets addresses, it's recommended that you first write down your recovery phrase and store it securely so that your wallets can be recovered in the case your device was lost or stolen.</span>
+            </div>
+          </label-tip>
         </ion-list>
-        <label-tip type="warn" *ngIf="walletGroup && walletGroup[0] && walletGroup[0].needsBackup" margin-top>
-          <span label-tip-title translate>Needs Backup</span>
-          <div label-tip-body>
-            <span translate>Before retrieving your wallets addresses, it's recommended that you first write down your recovery phrase and store it securely so that your wallets can be recovered in the case your device was lost or stolen.</span>
-          </div>
-        </label-tip>
       </div>
     </div>
 

@@ -472,6 +472,10 @@ page-home {
     }
   }
 
+  .notificationcollapsed{
+    display: none;
+  }
+
   .collapsed {
     height: 2px;
     border-bottom: 1px #eae9e9 solid;
