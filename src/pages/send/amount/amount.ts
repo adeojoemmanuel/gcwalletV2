@@ -84,6 +84,10 @@ export class AmountPage extends WalletTabsChild {
   public cardName: string;
   public cardConfig: CardConfig;
 
+  public arrowup: boolean;
+  public arrowdown: boolean;
+  public tabIndex;
+
   constructor(
     private actionSheetProvider: ActionSheetProvider,
     private configProvider: ConfigProvider,
@@ -146,6 +150,9 @@ export class AmountPage extends WalletTabsChild {
     this.toWalletId = this.navParams.data.toWalletId;
 
     this.cardName = this.navParams.get('cardName');
+    this.arrowup = true;
+    this.arrowdown = false;
+    this.tabIndex = 0;
   }
 
   async ionViewDidLoad() {
@@ -641,7 +648,36 @@ export class AmountPage extends WalletTabsChild {
     this.alternativeAmount = null;
   }
 
-  public changeUnit(): void {
+  // public changeUnit(): void {
+  //   if (this.fixedUnit) return;
+
+  //   this.unitIndex++;
+  //   if (this.unitIndex >= this.availableUnits.length) this.unitIndex = 0;
+
+  //   if (this.availableUnits[this.unitIndex].isFiat) {
+  //     // Always return to BTC... TODO?
+  //     this.altUnitIndex = 0;
+  //   } else {
+  //     this.altUnitIndex = _.findIndex(this.availableUnits, {
+  //       isFiat: true
+  //     });
+  //   }
+
+  //   this.resetValues();
+
+  //   this.zone.run(() => {
+  //     this.updateUnitUI();
+  //     this.changeDetectorRef.detectChanges();
+  //   });
+  // }
+
+  public changeUnit(index): void {
+    this.tabIndex = index;
+    if(this.unit === "USD"){
+       return
+    }
+    console.log(this.unit);
+    // this.alternativeAmount = this.expression;
     if (this.fixedUnit) return;
 
     this.unitIndex++;
@@ -656,11 +692,50 @@ export class AmountPage extends WalletTabsChild {
       });
     }
 
-    this.resetValues();
+    this.zone.run(() => {
+      this.updateUnitUI();
+      this.changeDetectorRef.detectChanges();
+      if(this.unit === "USD"){
+        this.arrowup = false;
+        this.arrowdown = true;
+      }else{
+        this.arrowdown = false;
+        this.arrowup = true;
+      }
+    });
+  }
+
+  public changeUnit2(index): void {
+    this.tabIndex = index;
+    if(this.unit === "BTC"){
+       return
+    }
+    console.log(this.unit);
+    // this.alternativeAmount = this.expression;
+    if (this.fixedUnit) return;
+
+    this.unitIndex++;
+    if (this.unitIndex >= this.availableUnits.length) this.unitIndex = 0;
+
+    if (this.availableUnits[this.unitIndex].isFiat) {
+      // Always return to BTC... TODO?
+      this.altUnitIndex = 0;
+    } else {
+      this.altUnitIndex = _.findIndex(this.availableUnits, {
+        isFiat: true
+      });
+    }
 
     this.zone.run(() => {
       this.updateUnitUI();
       this.changeDetectorRef.detectChanges();
+      if(this.unit === "USD"){
+        this.arrowup = false;
+        this.arrowdown = true;
+      }else{
+        this.arrowdown = false;
+        this.arrowup = true;
+      }
     });
   }
 

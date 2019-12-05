@@ -56,6 +56,7 @@ export class AddWalletPage {
       } else {
         this.navCtrl.push(SelectCurrencyPage, {
           isShared: this.navParams.data.isShared,
+          isZeroState: true,
           keyId
         });
       }

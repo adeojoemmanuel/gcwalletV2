@@ -115,7 +115,7 @@
             >
               <ion-icon name="add"></ion-icon>
             </button>
-            <button
+            <!-- <button
               ion-button
               clear
               icon-only
@@ -123,7 +123,7 @@
               (click)="reorderBtc()"
             >
               <ion-icon name="move"></ion-icon>
-            </button>
+            </button> -->
           </div>
           <div item-end *ngIf="showReorderBtc">
             <button ion-button clear color="secondary" (click)="reorderBtc()">
@@ -213,7 +213,7 @@
                 {{ data.zipcode }}
               </p>
             </button>
-            <button ion-button full primary (click)="searchAgain()">
+            <button ion-button full style="background-color: #f79420;" (click)="searchAgain()">
               Search Again
             </button>
           </div>

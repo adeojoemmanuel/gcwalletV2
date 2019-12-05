@@ -1,7 +1,7 @@
 page-wallet-group-settings {
   .wide-header {
     .toolbar-background {
-      background: white;
+      background: none;
     }
 
     ion-title .toolbar-title {
@@ -9,7 +9,7 @@ page-wallet-group-settings {
     }
 
     &__title {
-      color: black;
+      color: white;
       font-size: 25px;
       font-weight: 500;
       padding-top: 30px;

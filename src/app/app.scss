@@ -786,7 +786,7 @@ ion-app.ios .toolbar-title,
 .toolbar-background,
 .toolbar-background-ios,
 .toolbar-background-md {
-  background:  $color-primary;
+  background:  #495057;
 }
 
 #ion-diagnostics-toast {
@@ -1131,7 +1131,7 @@ page-shapeshift,
   @include toolbar-button-color(white);
 
   ion-title .toolbar-title {
-    color:  #f4f4f4;
+    // color:  #f4f4f4;
     font-weight:  75;
   }
 

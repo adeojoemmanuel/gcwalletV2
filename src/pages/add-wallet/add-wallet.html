@@ -1,4 +1,9 @@
-<wide-header-page title="{{ title }}">
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
   <div page-content>
     <ion-list class="settings-list bp-list">
       <button ion-item *ngFor="let walletsGroup of walletsGroups; let i = index" (click)="goToAddPage(walletsGroup[0].keyId)">
@@ -27,6 +32,5 @@
     <button ion-button class="button-standard" color="light" (click)="goToAddPage()">
       <span translate>Create New Key</span>
     </button>
-
   </div>
-</wide-header-page>
+</ion-content>

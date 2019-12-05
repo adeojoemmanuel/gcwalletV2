@@ -7,6 +7,11 @@ page-amount {
   ion-content.content {
     background: white;
   }
+
+  .amount-header .switcher.active{
+    background-color: #ccc;
+  }
+  
   $short-screen: 570px;
   .amount-wrapper {
     height: 99%;

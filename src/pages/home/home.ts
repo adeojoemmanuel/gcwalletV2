@@ -1143,6 +1143,7 @@ export class HomePage {
   }
 
   public collapseGroup(keyId: string) {
+    console.log(keyId);
     this.collapsedGroups[keyId] = this.collapsedGroups[keyId] ? false : true;
   }
 

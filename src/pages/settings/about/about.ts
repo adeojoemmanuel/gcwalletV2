@@ -71,7 +71,7 @@ export class AboutPage {
   }
 
   public openTermsOfUse() {
-    const url = 'https://bitpay.com/about/terms#wallet';
+    const url = 'https://www.getcoins.com/terms/';
     const optIn = true;
     const title = null;
     const message = this.translate.instant('View Wallet Terms of Use');
@@ -88,7 +88,7 @@ export class AboutPage {
   }
 
   public openPrivacyPolicy() {
-    const url = 'https://bitpay.com/about/privacy';
+    const url = 'https://www.getcoins.com/privacy/';
     const optIn = true;
     const title = null;
     const message = this.translate.instant('View Privacy Policy');

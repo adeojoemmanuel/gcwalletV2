@@ -49,7 +49,8 @@ export class AddPage {
         this.navCtrl.push(SelectCurrencyPage, {
           isShared,
           isOnboardingFlow: this.isOnboardingFlow,
-          isZeroState: this.isZeroState && !isShared,
+          isZeroState: true,
+          // isZeroState: this.isZeroState && !isShared,
           keyId: this.keyId
         });
       }

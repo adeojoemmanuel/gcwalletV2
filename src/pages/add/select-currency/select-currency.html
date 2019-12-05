@@ -1,4 +1,13 @@
-<wide-header-page title="{{title}}">
+<!-- <wide-header-page title="{{title}}"> -->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'Select Currency' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
   <div page-content *ngIf="!isZeroState">
     <ion-list class="settings-list bp-list">
       <div *ngFor="let coin of availableChains">
@@ -35,4 +44,5 @@
       </div>
     </div>
   </div>
-</wide-header-page>
+</ion-content>
+<!-- </wide-header-page> -->
