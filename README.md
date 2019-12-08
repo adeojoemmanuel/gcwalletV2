@@ -347,3 +347,9 @@ cordova build ios --release --versbose
 
 rm -f platforms/android/app/build/outputs/apk/release/android-release-signed-aligned.apk; 
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore getcoins.keystore -signedjar platforms/android/app/build/outputs/apk/release/android-release-signed.apk platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk  getcoins && ~/Library/Android/sdk/build-tools/29.0.2/zipalign -v 4 platforms/android/app/build/outputs/apk/release/android-release-signed.apk platforms/android/app/build/outputs/apk/release/android-release-signed-aligned.apk
+
+
+sudo chmod a+rwx ios/
+sudo chmod -R 777 ios/
+
+sudo cordova plugin rm cordova-plugin-wkwebview-engine --force
