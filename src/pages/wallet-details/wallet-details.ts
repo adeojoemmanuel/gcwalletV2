@@ -367,8 +367,8 @@ export class WalletDetailsPage extends WalletTabsChild {
 
       this.showNoTransactionsYetMsg = !hasTx;
 
-      if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
-        this.openBackupModal();
+      // if (this.wallet.needsBackup && hasTx && this.showBackupNeededMsg)
+      //   this.openBackupModal();
 
       this.showHistory();
     } else {

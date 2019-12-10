@@ -316,6 +316,19 @@ ion-spinner * {
   }
 }
 
+.btnsize{
+  font-size: 2vmin;
+}
+
+
+.box-notification33 {
+  border: none;
+  margin: 1%;
+  text-align: center;
+  width: 20%;
+  color: color($colors, light);
+}
+
 
 .box-notification3 {
   cursor: pointer;
@@ -326,9 +339,15 @@ ion-spinner * {
   width: 48%;
   color: color($colors, light);
   a {
-    display: block;
     color: color($colors, light);
-    width: 161px;
+    width: 10%;
+  }
+
+  span.value {
+      text-align: left;
+      width: 25%;
+      font-size: 4vw;
+      z-index: 1;
   }
   
   .icon {
@@ -487,7 +506,7 @@ ion-icon {
   }   
   &[class*='arrow-back'] {
     color: white;
-    mask-image:  url(../assets/img/left-arrow.svg);   
+    // mask-image:  url(../assets/img/left-arrow.svg);   
   }
   &[class*='tab-receive'] {   
     mask-image:  url(../assets/img/tab-icons/ico-receive.svg);   
@@ -532,9 +551,9 @@ ion-icon {
   font-weight:  400;
   font-size:  18px;
 
-  .button-inner {
-    padding:  2px;
-  }
+  // .button-inner {
+  //   padding:  2px;
+  // }
 
   span {
     @extend .two-lines;

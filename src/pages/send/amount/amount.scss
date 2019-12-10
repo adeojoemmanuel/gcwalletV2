@@ -9,7 +9,14 @@ page-amount {
   }
 
   .amount-header .switcher.active{
-    background-color: #ccc;
+    background-color: #ffa500;
+  }
+
+  .flexstyle {
+    // flex: 2;
+    display: flex; 
+    justify-content: 2px;
+    text-align: center
   }
   
   $short-screen: 570px;

@@ -236,9 +236,9 @@ export class HomePage {
 
     // Required delay to improve performance loading
     setTimeout(() => {
-      this.showSurveyCard();
-      this.showEthLive();
-      this.checkFeedbackInfo();
+      // this.showSurveyCard();
+      // this.showEthLive();
+      // this.checkFeedbackInfo();
       this.checkEmailLawCompliance();
     }, 2000);
 

@@ -24,16 +24,18 @@
 
     <div class="amount-header-margin">
       <div class="amount-header">
-        <div style="flex: 2">
-          <div class="switcher" [ngClass]="{'active': tabIndex === 0}" (click)="changeUnit2(0)" [hidden]="fixedUnit" tappable>
-            <img class="switcher__icon" src="assets/img/icon-swap.svg">
-            <div class="switcher__label">BTC</div>
+        <div class="flexstyle">
+          <div class="">
+            <div class="switcher" [ngClass]="{'active': tabIndex === 0}" (click)="changeUnit2(0)" [hidden]="fixedUnit" tappable>
+              <img class="switcher__icon" src="assets/img/icon-swap.svg">
+              <div class="switcher__label">BTC</div>
+            </div>
           </div>
-        </div>
-        <div style="flex: 1">
-          <div class="switcher" [ngClass]="{'active': tabIndex === 1}" (click)="changeUnit(1)" [hidden]="fixedUnit" tappable>
-            <img class="switcher__icon" src="assets/img/icon-swap.svg">
-            <div class="switcher__label">USD</div>
+          <div class="">
+            <div class="switcher" [ngClass]="{'active': tabIndex === 1}" (click)="changeUnit(1)" [hidden]="fixedUnit" tappable>
+              <img class="switcher__icon" src="assets/img/icon-swap.svg">
+              <div class="switcher__label">USD</div>
+            </div>
           </div>
         </div>
         <img class="next-button" [ngClass]="{'show': expression && allowSend}" src="assets/img/icon-next.svg" (click)="finish()" tappable>

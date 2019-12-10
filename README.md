@@ -353,3 +353,5 @@ sudo chmod a+rwx ios/
 sudo chmod -R 777 ios/
 
 sudo cordova plugin rm cordova-plugin-wkwebview-engine --force
+
+UIApplicationOpenSettingsURLString
