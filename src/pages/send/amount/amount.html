@@ -25,13 +25,13 @@
     <div class="amount-header-margin">
       <div class="amount-header">
         <div class="flexstyle">
-          <div class="">
-            <div class="switcher" [ngClass]="{'active': tabIndex === 0}" (click)="changeUnit2(0)" [hidden]="fixedUnit" tappable>
+          <div class="butt">
+            <div class="switcher switcher__label_extended" [ngClass]="{'active': tabIndex === 0}" (click)="changeUnit2(0)" [hidden]="fixedUnit" tappable>
               <img class="switcher__icon" src="assets/img/icon-swap.svg">
               <div class="switcher__label">BTC</div>
             </div>
           </div>
-          <div class="">
+          <div class="butt">
             <div class="switcher" [ngClass]="{'active': tabIndex === 1}" (click)="changeUnit(1)" [hidden]="fixedUnit" tappable>
               <img class="switcher__icon" src="assets/img/icon-swap.svg">
               <div class="switcher__label">USD</div>
