@@ -11,16 +11,17 @@
       <ion-icon class="custom-icon" name="ios-download-outline" item-start></ion-icon>
       {{'Version' | translate}}
       <ion-note item-end>
-        v{{version}}
+        <!-- v{{version}} -->
+        v3.0.0
       </ion-note>
     </ion-item>
-    <ion-item class="pointer" (click)="openExternalLink()">
+    <!-- <ion-item class="pointer" (click)="openExternalLink()">
       <ion-icon class="custom-icon" name="logo-github" item-start></ion-icon>
       Commit hash
       <ion-note item-end>
         #{{commitHash}}
       </ion-note>
-    </ion-item>
+    </ion-item> -->
     <ion-item-divider class="item-without-title"></ion-item-divider>
     <button ion-item (click)="openSendFeedbackPage()">
       <ion-icon class="item-img" item-start>

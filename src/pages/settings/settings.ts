@@ -206,8 +206,8 @@ export class SettingsPage {
   public openHelpExternalLink(): void {
     const url =
       this.appName == 'Copay'
-        ? 'https://github.com/bitpay/copay/issues'
-        : 'https://help.bitpay.com/bitpay-app';
+        ? 'https://www.getcoins.com'
+        : 'https://www.getcoins.com';
     const optIn = true;
     const title = null;
     const message = this.translate.instant(
@@ -267,6 +267,12 @@ export class SettingsPage {
 
   public openScanPage(){
     this.navCtrl.push(ScanPage);
+  }
+
+  public openScanner(): void {
+    this.navCtrl.parent.select(2);
+    // this.navCtrl.push(ScanPage);
+    this.navCtrl.setRoot(ScanPage);
   }
 
   public openWalletGroupSettings(keyId: string): void {

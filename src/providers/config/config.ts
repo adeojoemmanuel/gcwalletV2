@@ -136,13 +136,13 @@ export class ConfigProvider {
       },
 
       // Bitcore wallet service URL
-      // bws: {
-      //   url: 'https://bws.getcoins.network/bws/api'
-      // },
-
       bws: {
-        url: 'https://bws.bitpay.com/bws/api'
+        url: 'https://bws.getcoins.network/bws/api'
       },
+
+      // bws: {
+      //   url: 'https://bws.bitpay.com/bws/api'
+      // },
 
       download: {
         bitpay: {
