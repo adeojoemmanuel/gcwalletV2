@@ -80,8 +80,8 @@ export class WalletServiceUrlPage {
     switch (this.walletServiceForm.value.bwsurl) {
       case 'prod':
       case 'production':
-        bws = 'https://bws.getcoins.com/bws/api';
-        // bws = 'https://bws.bitpay.com/bws/api';
+        // bws = 'https://bws.getcoins.com/bws/api';
+        bws = 'https://bws.bitpay.com/bws/api';
         break;
       case 'sta':
       case 'staging':

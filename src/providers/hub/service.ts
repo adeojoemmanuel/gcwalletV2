@@ -42,12 +42,14 @@ export class LoginProvider {
     console.log('this is the login service');
     this.websitejson =  'https://www.getcoins.com/api/v1/getlocation/';
     // this.apiurl =  'https://api.customer-portal.getcns.tech';
-    this.apiurl =  'https://api.customer-portal.dev.getcns.tech';
+    // this.apiurl =  'https://api.customer-portal.dev.getcns.tech';
+    this.apiurl =  'https://api.customer-portal.getcns.tech';
     this.transactionsurl = 'https://api.customer-portal.getcns.tech/transactions';
+
     // this.locurl = 'assets/identloc.json';
     // this.locurlForBrowser = '../../../../assets/identloc.json';
     // this.reporturl = 'https://api.customer-portal.getcns.tech/ticket';
-    this.reporturl = 'https://api.customer-portal.dev.getcns.tech/ticket';
+    this.reporturl = 'https://api.customer-portal.getcns.tech/ticket';
     this.zendeskData = 'https://getcoins.zendesk.com/api/v2/tickets';
   }
 
