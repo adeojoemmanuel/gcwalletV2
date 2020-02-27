@@ -16,7 +16,7 @@ page-amount {
     // flex: 1; 
     display: flex;
     min-width: 100%; 
-    text-align: center
+    text-align: center;
   }
 
   .butt {
@@ -54,6 +54,12 @@ page-amount {
       pointer-events: all;
       transform: translateY(0);
     }
+  }
+  .nexbtn img {
+    margin-top: 2px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .amount-header {
     flex: 1;
