@@ -265,11 +265,11 @@ export class SettingsPage {
     );
   }
 
-  public openScanPage(){
+  public openScanner(){
     this.navCtrl.push(ScanPage);
   }
 
-  public openScanner(): void {
+  public openScanPage(): void {
     this.navCtrl.parent.select(2);
     // this.navCtrl.push(ScanPage);
     this.navCtrl.setRoot(ScanPage);

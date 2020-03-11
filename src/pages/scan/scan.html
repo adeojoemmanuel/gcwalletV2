@@ -10,16 +10,12 @@
 </ion-header>
 
 <ion-content *ngIf="!isCordova" class="fullscreen-tab">
-
   <div [hidden]="!selectedDevice || !hasPermission">
-
     <div [hidden]="!hasPermission" class="browser-scanner page-scan-camera-ready">
-
       <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
       <div class="guides">
         <img class="svg qr-scan-guides" src="assets/img/bitpay-wallet-qr-scan-guides.svg">
       </div>
-
     </div>
   </div>
 

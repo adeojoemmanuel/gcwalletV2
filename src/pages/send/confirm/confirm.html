@@ -175,9 +175,9 @@
 </ion-content>
 
 <ion-footer>
-  <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{'slide-confirm-fast slide-confirm-down': hideSlideButton, 'slide-confirm-slow': !hideSlideButton}" [disabled]="!wallet || !tx?.txp[wallet.id] || paymentExpired" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)">
-  </page-slide-to-accept>
-  <ion-toolbar *ngIf="!isCordova">
-    <button ion-button full class="button-footer" (click)="approve(tx, wallet)" [disabled]="!wallet || !tx?.txp[wallet.id] || paymentExpired">{{buttonText}}</button>
+  <!-- <page-slide-to-accept #slideButton *ngIf="isCordova" [ngClass]="{'slide-confirm-fast slide-confirm-down': hideSlideButton, 'slide-confirm-slow': !hideSlideButton}" [disabled]="!wallet || !tx?.txp[wallet.id] || paymentExpired" [buttonText]="buttonText" (slideDone)="approve(tx, wallet)">
+  </page-slide-to-accept> -->
+  <ion-toolbar>
+    <button ion-button full class="button-footer" (click)="approve(tx, wallet)" [disabled]="!wallet || !tx?.txp[wallet.id] || paymentExpired"> Tap to send </button>
   </ion-toolbar>
 </ion-footer>

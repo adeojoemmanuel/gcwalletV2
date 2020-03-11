@@ -37,12 +37,12 @@ export class IncomingDataMenuComponent extends ActionSheetParent {
   }
 
   public close(redirTo: string, value: string) {
-    if (redirTo == 'OpenExternalLink') {
-      if (this.isCordova) this.dismiss();
-      this.dismissFunction;
-      this.dismissFunction({ redirTo, value, coin: this.coin });
-    } else {
+    // if (redirTo == 'OpenExternalLink') {
+    //   // if (this.isCordova) this.dismiss();
+    //   // this.dismissFunction;
+    //   this.dismissFunction({ redirTo, value, coin: this.coin });
+    // } else {
       this.dismiss({ redirTo, value, coin: this.coin });
-    }
+    // }
   }
 }
