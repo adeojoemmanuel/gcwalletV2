@@ -42,7 +42,7 @@ export class IncomingDataProvider {
     dataMenu.present();
     dataMenu.onDidDismiss(data => this.finishIncomingData(data));
   }
-
+  
   public finishIncomingData(data: any): void {
     let redirTo = null;
     let value = null;

@@ -172,6 +172,10 @@ export class ScanPage {
 
   ngOnDestroy() {
     this.onResumeSubscription.unsubscribe();
+    this.events.unsubscribe(
+      'finishIncomingDataMenuEvent',
+      this.finishIncomingDataMenuEventHandler
+    );
   }
 
   private incomingDataErrorHandler: any = err => {
@@ -257,7 +261,9 @@ export class ScanPage {
   }
 
   private sendPaymentToAddress(bitcoinAddress: string, coin: string): void {
-    this.navCtrl.push(AmountPage, { toAddress: bitcoinAddress, coin });
+     this.navCtrl.setRoot(AmountPage, { toAddress: bitcoinAddress, coin }).then(() => {
+       this.events.unsubscribe('finishIncomingDataMenuEvent');
+     });
   }
 
   private addToAddressBook(bitcoinAddress: string): void {

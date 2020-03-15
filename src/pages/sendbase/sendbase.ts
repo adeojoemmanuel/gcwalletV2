@@ -155,36 +155,12 @@ export class SendbasePage {
     });
   }
 
-  ionViewDidLoad() {
-    this.logger.info('ionViewDidLoad SendPage');
-  }
-
-  ionViewWillLeave() {
-    this.events.unsubscribe('finishIncomingDataMenuEvent');
-  }
 
   ionViewWillEnter() {
     this.walletsBtc = this.profileProvider.getWallets({ coin: 'btc' });
     this.walletsBch = this.profileProvider.getWallets({ coin: 'bch' });
     this.hasBtcWallets = !_.isEmpty(this.walletsBtc);
     this.hasBchWallets = !_.isEmpty(this.walletsBch);
-
-    this.events.subscribe('finishIncomingDataMenuEvent', data => {
-      switch (data.redirTo) {
-        case 'AmountPage':
-          this.sendPaymentToAddress(data.value, data.coin);
-          break;
-        case 'AddressBookPage':
-          this.addToAddressBook(data.value);
-          break;
-        case 'OpenExternalLink':
-          this.goToUrl(data.value);
-          break;
-        case 'PaperWalletPage':
-          this.scanPaperWallet(data.value);
-          break;
-      }
-    });
 
     this.updateBchWalletsList();
     this.updateBtcWalletsList();

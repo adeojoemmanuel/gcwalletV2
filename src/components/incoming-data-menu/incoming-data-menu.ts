@@ -34,15 +34,18 @@ export class IncomingDataMenuComponent extends ActionSheetParent {
     if (this.type === 'url') {
       this.https = this.data.indexOf('https://') === 0 ? true : false;
     }
+    // this.close('AmountPage', this.data);
   }
 
   public close(redirTo: string, value: string) {
-    // if (redirTo == 'OpenExternalLink') {
-    //   // if (this.isCordova) this.dismiss();
-    //   // this.dismissFunction;
-    //   this.dismissFunction({ redirTo, value, coin: this.coin });
-    // } else {
+    if (redirTo == 'OpenExternalLink') {
+      if (this.isCordova) this.dismiss();
+      this.dismissFunction;
+      this.dismissFunction({ redirTo, value, coin: this.coin });
+      return;
+    } else {
       this.dismiss({ redirTo, value, coin: this.coin });
-    // }
+      return;
+    }
   }
 }
