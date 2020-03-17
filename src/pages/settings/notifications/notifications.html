@@ -35,10 +35,10 @@
       </ion-item>
     </div>
 
-    <ion-item [ngClass]="{'with-label': emailNotifications}" class="no-border">
+<!--     <ion-item [ngClass]="{'with-label': emailNotifications}" class="no-border">
       <ion-label>{{ 'Enable email notifications' | translate }}</ion-label>
       <ion-toggle [(ngModel)]="emailNotifications" (ionChange)="emailNotificationsChange()"></ion-toggle>
-    </ion-item>
+    </ion-item> -->
 
     <label-tip *ngIf="emailNotifications" type="info" header="no-header">
       <div label-tip-body translate>
