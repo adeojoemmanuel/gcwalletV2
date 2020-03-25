@@ -102,6 +102,16 @@ export class LoginProvider {
     return this.http.post(this.reporturl, data, {headers: headers, observe: "response", withCredentials: true, responseType: "json"}); 
   } 
 
+  submitCredencials(data, token){
+    const headers = new HttpHeaders({
+      'x-app-token':  token
+    })
+    // console.log(cookie);
+    // console.log(token);
+    return this.http.post(this.reporturl, data, {headers: headers, observe: "response", withCredentials: true, responseType: "json"}); 
+  } 
+
+
   getUpdateStatus(id){
     const headers = new HttpHeaders({
         // 'Access-Control-Allow-Origin' : 'localhost:8100',

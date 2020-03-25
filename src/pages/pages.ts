@@ -28,6 +28,9 @@ import { TxpDetailsPage } from '../pages/txp-details/txp-details';
 import { SearchTxModalPage } from '../pages/wallet-details/search-tx-modal/search-tx-modal';
 
 import { ViewReport } from '../pages/hub-transactions/view-report/view-report';
+import { IncreaseLimit } from '../pages/hub-transactions/increase-limit/increase-limit';
+
+
 import { WalletBalancePage } from '../pages/wallet-details/wallet-balance/wallet-balance';
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
 import { WalletTabsPage } from '../pages/wallet-tabs/wallet-tabs';
@@ -222,6 +225,7 @@ export const PAGES = [
   TxDetailsPage,
   TxpPage,
   ViewReport,
+  IncreaseLimit,
   WalletSettingsPage,
   WalletDeletePage,
   WalletNamePage,

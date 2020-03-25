@@ -23,10 +23,10 @@ import 'rxjs/add/observable/interval'
 import {Observable} from 'rxjs/Rx';
 
 import { TransactionDetailsPage } from '../transaction-details/transaction-details';
-
-// import { ReportTransaction } from '../report-transaction/report-transaction'
 import { ViewReport } from '../view-report/view-report'
 
+// import { ReportTransaction } from '../report-transaction/report-transaction'
+import { IncreaseLimit } from '../increase-limit/increase-limit'
 import * as _ from 'lodash';
 
 @Component({
@@ -99,7 +99,8 @@ export class TransactionsPage implements OnInit {
       { title: 'Dashboard', component: TransactionsPage, icon:'banki-summary' },
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
-      { title: 'View Report', component: ViewReport, icon:'banki-exchange' }
+      { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
+      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
     ];
     this.okText = this.translate.instant('Ok');
     this.cancelText = this.translate.instant('Cancel');
