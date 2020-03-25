@@ -497,14 +497,6 @@ export class IncreaseLimit {
     var filename = this.lastImage;
 
       const data = {
-        transaction_date: this.transaction_date,
-        kiosk_id: this.kiosk_id,
-        amount_fiat: this.amount_fiat,
-        amount_crypto: this.amount_crypto,
-        status:this.status,
-        address: this.address,
-        atm_id: this.atm_id,
-        transaction_id: this.transaction_id,
         info: this.info,
         email: this.email, 
         phone: this.phone,
