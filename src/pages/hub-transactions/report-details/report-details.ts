@@ -8,6 +8,9 @@ import { Camera } from '@ionic-native/camera';
 import { LoginProvider } from '../../../providers/hub/service';
 
 // import { PopupProvider } from '../../providers/popup/popup';
+import { TransactionsPage } from '../transactions/transactions'
+import { ViewReport } from '../view-report/view-report'
+import { IncreaseLimit } from '../increase-limit/increase-limit'
 
 /**
  * Generated class for the AtmLocationsPage page.
@@ -65,9 +68,17 @@ export class ReportDetailsPage {
     public platform: Platform,
     private loginProvider: LoginProvider
   ) {
-     this.pages = [
-      { title: 'Dashboard', component: 'TransactionsPage',icon:'banki-summary' },
-      { title: 'Transactions', component: 'TransactionsPage',icon:'banki-exchange' },
+    //  this.pages = [
+    //   { title: 'Dashboard', component: 'TransactionsPage',icon:'banki-summary' },
+    //   { title: 'Transactions', component: 'TransactionsPage',icon:'banki-exchange' },
+    // ];
+
+    this.pages = [
+      { title: 'Dashboard', component: TransactionsPage, icon:'banki-summary' },
+      { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
+      // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
+      { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
+      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
     ];
     // this.id = navParams.get('locationId');
     // this.serverJson = navParams.get('serverJson');
@@ -107,6 +118,15 @@ export class ReportDetailsPage {
       return status;
     }
   }
+
+   openPage(page) {
+    // this.navCtrl.push(page);
+    this.menu.enable(false)
+    this.navCtrl.setRoot(page);
+    // this.navCtrl.getRootNav().setRoot(page);
+    // this.navCtrl.popToRoot();
+  }
+
 
   public responsemsg(title, msg): void {
     const alert = this.alertCtrl.create({

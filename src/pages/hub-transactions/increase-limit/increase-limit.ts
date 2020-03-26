@@ -146,12 +146,20 @@ export class IncreaseLimit {
       { title: 'Dashboard', component: TransactionsPage, icon:'banki-summary' },
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
-      { title: 'View Report', component: ViewReport, icon:'banki-exchange' }
+      { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
+      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
     ];
-
     this.files = this.base64Image;
     const token = localStorage.getItem('token');
     // alert(token);
+  }
+
+  openPage(page) {
+    // this.navCtrl.push(page);
+    this.menu.enable(false)
+    this.navCtrl.setRoot(page);
+    // this.navCtrl.getRootNav().setRoot(page);
+    // this.navCtrl.popToRoot();
   }
 
   // files: new FormArray([]) 
@@ -166,10 +174,12 @@ export class IncreaseLimit {
   };
 
   browseFile(){
+    console.log("file browse triggered");
     this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
   }
 
   openCam(){
+    console.log("open camera triggered");
     this.takePicture(this.camera.PictureSourceType.CAMERA);
   }
 
@@ -454,7 +464,7 @@ export class IncreaseLimit {
       console.log(this.imageArr);
     }, (err) => {
       console.log(err)
-      this.presentToast('Error while selecting image.');
+      this.presentToast('Current Platform Does Support Cordova.');
     });
   }
 

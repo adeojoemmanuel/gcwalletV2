@@ -14,31 +14,39 @@
 
 <ion-nav [root]="rootPage" #content  [class.animateApp]="animateVarible==true" swipeBackEnabled="false"></ion-nav> 
 
-
- 
-<ion-header>
-  <ion-navbar hideBackButton>
-    <ion-buttons left>
-      <button (click)="toggleMenu()" ion-button icon-only left>
-        <ion-icon name="ios-menu" style="color: black;"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>Increase Limit</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-refresher
-    (ionRefresh)="doRefresh($event)"
-    *ngIf="!showReorderBtc && !showReorderBch"
-  >
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-  <div class="appForm">
-    <div class="camSection">
-      <button (click)="openCam()">Use Camera</button><br>
-    </div>
-    <button (click)="browseFile()">Browse File</button>
+<ion-content>
+  <ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="toggleMenu()" ion-button icon-only left>
+          <ion-icon name="ios-menu" style="color: white;"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Increase Limit</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <div class="uc-document__content">
+    <p>
+      <img class="document-image" src="assets/img/undraw_fill_forms_yltj.svg" alt="document image"/>
+    </p>
+    <span>You need to Upload your</span>
+    <h3 class="uc-document__title">Driving License</h3>
+    <p>Lorem ipsum is placeholder text commonly used in the graphic, print</p>
+  </div>
+  <div class="uc-camera__upload" (click)="openCam()">
+    <ion-icon ios="ios-camera-outline" md="ios-camera-outline"></ion-icon>
+    <span>Use Camera</span>
+  </div>
+  <div class="uc-divider"><span>or</span></div>
+  <div class="uc-gallery__document" (click)="browseFile()">
+    <ion-row>
+      <ion-col col-auto>
+        <ion-icon ios="ios-image-outline" md="ios-image-outline"></ion-icon>
+      </ion-col>
+      <ion-col col>
+        <h3 class="uc-gallery__title">Select the document from Gallery</h3>
+        <span>.png,.jpg or .pdf</span>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

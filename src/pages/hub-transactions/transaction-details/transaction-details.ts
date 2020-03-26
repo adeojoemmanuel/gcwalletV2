@@ -7,6 +7,9 @@ import { Logger } from '../../../providers/logger/logger';
 import { ReportTransaction } from '../report-transaction/report-transaction'
 
 // import { PopupProvider } from '../../providers/popup/popup';
+import { TransactionsPage } from '../transactions/transactions'
+import { ViewReport } from '../view-report/view-report'
+import { IncreaseLimit } from '../increase-limit/increase-limit'
 
 /**
  * Generated class for the AtmLocationsPage page.
@@ -54,10 +57,19 @@ export class TransactionDetailsPage {
     private menu: MenuController,
     public alertCtrl: AlertController
   ) {
-     this.pages = [
-      { title: 'Dashboard', component: 'TransactionsPage',icon:'banki-summary' },
-      { title: 'Transactions', component: 'TransactionsPage',icon:'banki-exchange' },
+    //  this.pages = [
+    //   { title: 'Dashboard', component: 'TransactionsPage',icon:'banki-summary' },
+    //   { title: 'Transactions', component: 'TransactionsPage',icon:'banki-exchange' },
+    // ];
+
+    this.pages = [
+      { title: 'Dashboard', component: TransactionsPage, icon:'banki-summary' },
+      { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
+      // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
+      { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
+      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
     ];
+
     // this.id = navParams.get('locationId');
     // this.serverJson = navParams.get('serverJson');
     // this.localJson = navParams.get('localJson');
@@ -131,6 +143,16 @@ export class TransactionDetailsPage {
    * Open direction page with popup menu
    * Another way to take user to the DIrection external page
    */
+
+  openPage(page) {
+    // this.navCtrl.push(page);
+    this.menu.enable(false)
+    this.navCtrl.setRoot(page);
+    // this.navCtrl.getRootNav().setRoot(page);
+    // this.navCtrl.popToRoot();
+  }
+
+
   public openDirectionLink(): void {
     let url = this.googleDirUrl;
     let optIn = true;
