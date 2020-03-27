@@ -507,9 +507,9 @@ export class IncreaseLimit {
     var filename = this.lastImage;
 
       const data = {
-        info: this.info,
-        email: this.email, 
-        phone: this.phone,
+        info: "image upload",
+        email: "info@getcoins.com", 
+        phone: "08149848925",
         files: this.imageArr
       }
 
