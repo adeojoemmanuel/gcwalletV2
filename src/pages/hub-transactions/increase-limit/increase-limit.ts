@@ -364,8 +364,8 @@ export class IncreaseLimit {
             this.lastImage = newFileName;
             (async () => {
               await this.prepareAll(newFileName);
+              this.uploadFileCount = this.imageArr.length + 1;
              })()  
-             this.uploadFileCount = this.imageArr.length + 1;
              console.log(this.imageArr.length)
           }).catch((error)=>{
             console.log(error);
@@ -419,25 +419,25 @@ export class IncreaseLimit {
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
       this.encoded_files = imagePath
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-        this.filePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            this.encoded_files = filePath
-            this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-            this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-            this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-            // this.prepareAll(this.lastImage);
-            // console.log
-          });
-      } else {
+      // if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+      //   this.filePath.resolveNativePath(imagePath)
+      //     .then(filePath => {
+      //       this.encoded_files = filePath
+      //       this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+      //       this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+      //       this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
+      //       this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
+      //       this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
+      //       // this.prepareAll(this.lastImage);
+      //       // console.log
+      //     });
+      // } else {
         this.correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
         this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
         this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
         this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-      }
+      // }
       // this.lastImage = null;
       console.log(this.imageArr);
     }, (err) => {
@@ -476,22 +476,40 @@ export class IncreaseLimit {
     return this.createForm.get('files').value;
   }
 
+  private convertdate() {
+    return new Date();
+  }
 
   public submitform(){
+    if (this.imageArr === undefined || this.imageArr.length == 0) {
+      // this.presentToast('Error Kindly Upload Your Document.');
+      return this.reporTransactionerror('Error', 'Error Kindly Upload Your Document.');
+    }
 
     // File for Upload
-    const targetPath = this.pathForImage(this.lastImage);
+    // const targetPath = this.pathForImage(this.lastImage);
    
-    // File name only
-    var filename = this.lastImage;
+    // File name only 
+    // var filename = this.lastImage;
+    let d = this.convertdate();
+    const unixTime = d.valueOf();
+    d = new Date(unixTime);
+    const rd = d.toISOString();
 
       const data = {
-        info: "image upload",
-        email: "info@getcoins.com", 
-        phone: "08149848925",
+        transaction_date: new Date(),
+        kiosk_id: 0,
+        amount_fiat: 0,
+        amount_crypto: 0,
+        status:"COMPLETE",
+        address: "",
+        atm_id: 0,
+        transaction_id: "0",
+        info: "user verfication info",
+        email: "verfication@getcoins.com",
+        phone: "",
         files: this.imageArr
       }
-
 
       this.loading = this.loadingCtrl.create({
         content: 'hold on while we upload your file...',
@@ -500,7 +518,7 @@ export class IncreaseLimit {
 
       const token = localStorage.getItem('token');
       this.buttonDisabled = true;
-      this.loginProvider.submitCredencials(data, token)
+      this.loginProvider.report(data, token)
       .subscribe((res) => {
          console.log(res);
         this.buttonDisabled = false;
@@ -524,7 +542,8 @@ export class IncreaseLimit {
         this.files = null;
         this.imageArr.splice(0, this.imageArr.length);
         this.presentToast('Error while uploading file.');
-        return this.reporTransactionerror('Error', 'there was an issue reporting your case');
+        console.log(error);
+        return this.reporTransactionerror('Error', error.message);
         
       });
   }

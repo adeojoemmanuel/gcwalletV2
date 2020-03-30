@@ -30,6 +30,7 @@ export class LoginProvider {
   public cookie;
   public cookieval;
   public reporturl;
+  public uploadurl;
   public zendeskData;
 
 
@@ -50,6 +51,7 @@ export class LoginProvider {
     // this.locurlForBrowser = '../../../../assets/identloc.json';
     // this.reporturl = 'https://api.customer-portal.getcns.tech/ticket';
     this.reporturl = 'https://api.customer-portal.getcns.tech/ticket';
+    this.uploadurl = 'https://api.customer-portal.getcns.tech/tickets.json';
     this.zendeskData = 'https://getcoins.zendesk.com/api/v2/tickets';
   }
 

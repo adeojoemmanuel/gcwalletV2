@@ -15,23 +15,23 @@ import {
   Loading
 } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
-import { FormBuilder,AbstractControl, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormBuilder,AbstractControl, FormGroup, FormArray } from '@angular/forms';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ExternalLinkProvider } from '../../../providers/external-link/external-link';
 import { Logger } from '../../../providers/logger/logger';
 
-import { TransactionDetailsPage } from '../transaction-details/transaction-details';
+// import { TransactionDetailsPage } from '../transaction-details/transaction-details';
 
 import { TransactionsPage } from '../transactions/transactions'
 import { ViewReport } from '../view-report/view-report'
 
-import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+// import { HttpClient,HttpHeaders} from '@angular/common/http';
+// import { Observable } from 'rxjs/Observable';
 
 import { LoginProvider } from '../../../providers/hub/service';
 
 // import { PopupProvider } from '../../providers/popup/popup';
-import * as moment from 'moment'
+// import * as moment from 'moment'
 import { IOSFilePicker } from "@ionic-native/file-picker";
 import { FileChooser } from "@ionic-native/file-chooser";
 import { Camera, CameraOptions } from "@ionic-native/camera";
@@ -39,7 +39,7 @@ import { Base64 } from "@ionic-native/base64";
 import { FilePath } from "@ionic-native/file-path";
 
 import { File } from '@ionic-native/file';
-import { Transfer, TransferObject } from '@ionic-native/transfer';
+import { Transfer } from '@ionic-native/transfer';
 
 // import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
@@ -58,8 +58,8 @@ export class ReportTransaction {
   public customYearValues = [2020, 2016, 2008, 2004, 2000, 1996];
   public customDayShortNames = ['s\u00f8n', 'man', 'tir', 'ons', 'tor', 'fre', 'l\u00f8r'];
   public customPickerOptions: any;
-  private passkey;
-  private cookie;
+  // private passkey;
+  // private cookie;
   public transactionData;
   public pages: Array<{title: string, component: any,icon:any}>;
   public tfiat;
@@ -67,7 +67,7 @@ export class ReportTransaction {
   public picture;
   public base64Image = null;
   public onsubmitform;
-  private alert: Alert;
+  // private alert: Alert;
   public buttonDisabled: boolean = false;
   public tempfile;
   public transaction_date;
@@ -102,10 +102,10 @@ export class ReportTransaction {
     public navCtrl: NavController,
     public navParams: NavParams,
     private logger: Logger,
-    private translate: TranslateService,  
-    private externalLinkProvider: ExternalLinkProvider,
+    // private translate: TranslateService,  
+    // private externalLinkProvider: ExternalLinkProvider,
     // private popupProvider: PopupProvider,
-    private iab: InAppBrowser, // private geo: Geolocation,
+    // private iab: InAppBrowser, // private geo: Geolocation,
     private menu: MenuController,
     public alertCtrl: AlertController,
     private fb: FormBuilder,
@@ -116,12 +116,12 @@ export class ReportTransaction {
     private fileChooser: FileChooser,
     private plt: Platform,
     private filePicker: IOSFilePicker,
-    private actionSheetCtrl: ActionSheetController,
+    // private actionSheetCtrl: ActionSheetController,
     private filePath: FilePath,
     private toastCtrl: ToastController,
     public actionsheetCtrl: ActionSheetController,
     public platform: Platform,
-    private transfer: Transfer, 
+    // private transfer: Transfer, 
     private filew: File, 
     public loadingCtrl: LoadingController,
     public _DomSanitizer: DomSanitizer
