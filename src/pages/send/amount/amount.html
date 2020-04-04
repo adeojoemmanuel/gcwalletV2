@@ -39,9 +39,6 @@
           </div>
         </div>
       </div>
-      <div class="nexbtn">
-        <img class="next-button" [ngClass]="{'show': expression && allowSend}" src="assets/img/icon-next.svg" (click)="finish()" tappable>
-      </div>
     </div>
 
     <div class="amount-content">
@@ -57,10 +54,11 @@
         <span *ngIf="fiatCode !== alternativeUnit">{{alternativeAmount || '0'}}</span>
         {{alternativeUnit}}
       </div>
+      <div class="nexbtn">
+        <img class="next-button" [ngClass]="{'show': expression && allowSend}" src="assets/img/icon-next.svg" (click)="finish()" tappable>
+      </div>
     </div>
-
     <pin-pad (keystroke)="pushDigit($event)" type="amount" [showSendMax]="isSendMaxButtonShown()" [integersOnly]="onlyIntegers"></pin-pad>
-
   </div>
 
 </ion-content>

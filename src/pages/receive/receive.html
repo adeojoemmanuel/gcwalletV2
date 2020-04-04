@@ -88,13 +88,13 @@
         <ngx-qrcode (click)="showFullAddr()" *ngIf="address" copy-to-clipboard="{{ address }}" hide-toast="true" qrc-value="{{address}}" qrc-class="aclass" qrc-errorCorrectionLevel="M"></ngx-qrcode>
       </div>
     </div>
-    <div class="prompt-user lines-background">
+<!--     <div class="prompt-user lines-background">
       <div class="subtitle-info">
         <span translate>Before retrieving your wallet address, it's recommended that you first write down your recovery phrase and store it securely so that your wallet can be recovered in the case your device was lost or stolen.</span>
       </div>
       <button ion-button class="button-standard" (click)="goToBackup()">
         {{'Write Down Recovery Phrase' | translate}}
       </button>
-    </div>
+    </div> -->
   </div>
 </ion-content>

@@ -84,6 +84,7 @@ export class IncreaseLimit {
 
   fileArray: Array<{ displayFile: any; base64File: string }> = [];
   imageArr: Array<{ Filename: any; data: any }> = [];
+  rarray: Array<{Filename: any}> = [];
 
 
   constructor(
@@ -132,7 +133,7 @@ export class IncreaseLimit {
       { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
     ];
     this.files = this.base64Image;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     // alert(token);
   }
 
@@ -361,10 +362,26 @@ export class IncreaseLimit {
             this.newfpath = dirEntry;
             this.presentToast("successfull storage");
             entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
-            this.lastImage = newFileName;
+
+            // this.lastImage = newFileName;
+            // var targetPath = this.pathForImage(newFileName);
+            // var filename = newFileName;
+            // this.base64.encodeFile(targetPath).then((base64File: string) => {
+            //   this.base64enc = base64File;
+            //   let imageSrc = base64File.split(",");
+            //   // console.log("---Splitted image string----" + imageSrc[1]);
+            //   this.imageArr.push({
+            //     "Filename": filename,
+            //     "data": imageSrc[1]
+            //   });
+            // }, (err) => {
+            //   // reject(err)
+            //   console.log(err);
+            // });
+
             (async () => {
               await this.prepareAll(newFileName);
-              this.uploadFileCount = this.imageArr.length + 1;
+              this.uploadFileCount = this.rarray.length;
              })()  
              console.log(this.imageArr.length)
           }).catch((error)=>{
@@ -391,6 +408,7 @@ export class IncreaseLimit {
         }));
       }, (err) => {
         reject(err)
+        this.presentToast("base64" + err);
         console.log(err);
       });
     });
@@ -405,7 +423,7 @@ export class IncreaseLimit {
     }
   }
 
-  public takePicture(sourceType) {
+   public takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
       quality: 100,
@@ -419,30 +437,33 @@ export class IncreaseLimit {
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
       this.encoded_files = imagePath
-      // if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-      //   this.filePath.resolveNativePath(imagePath)
-      //     .then(filePath => {
-      //       this.encoded_files = filePath
-      //       this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-      //       this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-      //       this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-      //       this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-      //       this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-      //       // this.prepareAll(this.lastImage);
-      //       // console.log
-      //     });
-      // } else {
+      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+        this.filePath.resolveNativePath(imagePath)
+          .then(filePath => {
+            this.encoded_files = filePath
+            this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+            this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+            this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
+            this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
+            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
+            // this.prepareAll(this.lastImage);
+            // console.log
+          }, (err) => {
+            console.log(err)
+            this.presentToast(err + " 2");
+          });
+      } else {
         this.correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
         this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
         this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
         this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-      // }
+      }
+      this.rarray.push({"Filename": this.currentName})
       // this.lastImage = null;
       console.log(this.imageArr);
     }, (err) => {
       console.log(err)
-      // Acceptable form of ID is Drivers License or Valid Passport or State issued ID
       this.presentToast(err);
     });
   }
@@ -481,7 +502,7 @@ export class IncreaseLimit {
   }
 
   public submitform(){
-    if (this.imageArr === undefined || this.imageArr.length == 0) {
+    if (this.imageArr.length <= 0) {
       // this.presentToast('Error Kindly Upload Your Document.');
       return this.reporTransactionerror('Error', 'Error Kindly Upload Your Document.');
     }

@@ -120,6 +120,8 @@
         <splash density="port-xxhdpi" src="resources/getcoins/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/getcoins/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
+    <plugin name="cordova-plugin-filepath" spec="^1.5.8" />
+    <plugin name="com-badrit-base64" spec="^0.2.0" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
 </widget>
