@@ -364,8 +364,16 @@ export class IncreaseLimit {
             entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
 
             (async () => {
-              await this.prepareAll(newFileName, imagePath);
-              this.uploadFileCount = this.rarray.length;
+              if(this.platform.is('android')){
+                await this.prepareAllAndroid(newFileName);
+                this.uploadFileCount = this.rarray.length;
+              }else if(this.platform.is('ios')){
+                await this.prepareAll(newFileName, imagePath);
+                this.uploadFileCount = this.rarray.length;
+              }else{
+                await this.prepareAll(newFileName, imagePath);
+                this.uploadFileCount = this.rarray.length;
+              }
              })()  
              console.log(this.imageArr.length)
           }).catch((error)=>{
@@ -387,26 +395,25 @@ export class IncreaseLimit {
     });
   }
 
-  // async prepareAll(newFilename, imagePath){
-  //   new Promise((resolve) => {
-  //     // var targetPath = this.pathForImage(newFilename);
-  //     // var filename = newFilename;
-  //     // this.base64.encodeFile(targetPath).then((base64File: string) => {
-  //       // this.base64enc = base64File;
-  //       // let imageSrc = base64File.split(",");
-  //       // console.log("---Splitted image string----" + imageSrc[1]);
-  //       resolve(this.imageArr.push({
-  //         "Filename": newFilename,
-  //         "data": imagePath
-  //       }));
-  //     // }, (err) => {
-  //     //   reject(err)
-  //     //   this.presentToast("base64" + err);
-  //     //   console.log(err);
-  //     // });
-  //   });
-  // }
-
+  async prepareAllAndroid(newFilename){
+    new Promise((resolve, reject) => {
+      var targetPath = this.pathForImage(newFilename);
+      var filename = newFilename;
+      this.base64.encodeFile(targetPath).then((base64File: string) => {
+        this.base64enc = base64File;
+        let imageSrc = base64File.split(",");
+        // console.log("---Splitted image string----" + imageSrc[1]);
+        resolve(this.imageArr.push({
+          "Filename": filename,
+          "data": imageSrc[1]
+        }));
+      }, (err) => {
+        reject(err)
+        this.presentToast("base64" + err);
+        console.log(err);
+      });
+    });
+  }
 
   // Always get the accurate path to your apps folder
   public pathForImage(img) {
