@@ -350,7 +350,7 @@ export class IncreaseLimit {
       this.presentToast(error);
   }
 
-  public copyFileToLocalDir(namePath, currentName, newFileName, imagePath) {
+  public copyFileToLocalDir(namePath, currentName, newFileName) {
     // cordova.file.dataDirectory
     let externalStoragePath: string =  cordova.file.dataDirectory;
     this.filew.resolveLocalFilesystemUrl(namePath + currentName)
@@ -364,16 +364,8 @@ export class IncreaseLimit {
             entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
 
             (async () => {
-              if(this.platform.is('android')){
-                await this.prepareAllAndroid(newFileName);
-                this.uploadFileCount = this.rarray.length;
-              }else if(this.platform.is('ios')){
-                await this.prepareAll(newFileName, imagePath);
-                this.uploadFileCount = this.rarray.length;
-              }else{
-                await this.prepareAll(newFileName, imagePath);
-                this.uploadFileCount = this.rarray.length;
-              }
+              await this.prepareAll(newFileName);
+              this.uploadFileCount = this.rarray.length;
              })()  
              console.log(this.imageArr.length)
           }).catch((error)=>{
@@ -386,16 +378,7 @@ export class IncreaseLimit {
       });
   }
 
-  async prepareAll(newFilename, imagePath){
-    new Promise((resolve) => {
-        resolve(this.imageArr.push({
-          "Filename": newFilename,
-          "data": imagePath
-        }));
-    });
-  }
-
-  async prepareAllAndroid(newFilename){
+  async prepareAll(newFilename){
     new Promise((resolve, reject) => {
       var targetPath = this.pathForImage(newFilename);
       var filename = newFilename;
@@ -432,9 +415,8 @@ export class IncreaseLimit {
       saveToPhotoAlbum: false,
       correctOrientation: true,
       encodingType: this.camera.EncodingType.JPEG,
-      destinationType : 0
+      destinationType : this.camera.DestinationType.FILE_URI
     };
-    // destinationType : this.camera.DestinationType.FILE_URI 
     // Get the data of an image DATA_URL
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
@@ -447,7 +429,7 @@ export class IncreaseLimit {
             this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
             this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
             this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName(), imagePath);
+            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
             // this.prepareAll(this.lastImage);
             // console.log
           }, (err) => {
@@ -459,7 +441,7 @@ export class IncreaseLimit {
         this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
         this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
         this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-        this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName(), imagePath);
+        this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
       }
       this.rarray.push({"Filename": this.currentName})
       // this.lastImage = null;
@@ -504,7 +486,7 @@ export class IncreaseLimit {
   }
 
   public submitform(){
-    if (this.rarray.length <= 0) {
+    if (this.rarray.length < 1) {
       // this.presentToast('Error Kindly Upload Your Document.');
       return this.reporTransactionerror('Error', 'Error Kindly Upload Your Document.');
     }
@@ -567,7 +549,7 @@ export class IncreaseLimit {
         this.presentToast('Error while uploading file.');
         console.log(error);
         return this.reporTransactionerror('Error', error.message);
-        
+         this.rarray.length = 0;
       });
   }
      
