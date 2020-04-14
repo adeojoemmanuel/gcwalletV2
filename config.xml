@@ -120,7 +120,6 @@
         <splash density="port-xxhdpi" src="resources/getcoins/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/getcoins/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <plugin name="com-badrit-base64" spec="^0.2.0" />
-    <engine name="android" spec="7.1.4" />
+    <engine name="android" spec="8.1.0" />
     <engine name="ios" spec="5.1.1" />
 </widget>
