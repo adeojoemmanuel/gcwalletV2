@@ -393,7 +393,7 @@ export class IncreaseLimit {
       }, (err) => {
         reject(err)
         this.presentToast("base64" + err);
-        console.log(err);
+        console.log("base46 err "+err);
       });
     });
   }

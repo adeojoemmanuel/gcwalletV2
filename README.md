@@ -355,3 +355,5 @@ sudo chmod -R 777 ios/
 sudo cordova plugin rm cordova-plugin-wkwebview-engine --force
 
 UIApplicationOpenSettingsURLString
+
+$cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
