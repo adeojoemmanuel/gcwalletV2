@@ -31,6 +31,8 @@ import { FilePath } from "@ionic-native/file-path";
 
 import { File } from '@ionic-native/file';
 
+import { normalizeURL } from 'ionic-angular';
+
 // import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -350,7 +352,48 @@ export class IncreaseLimit {
       this.presentToast(error);
   }
 
-  public copyFileToLocalDir(namePath, currentName, newFileName) {
+  private copyFileToLocalDir3(namePath, currentName, newFileName) {
+    this.filew.copyFile(namePath, currentName, this.filew.dataDirectory, newFileName).then(success => {
+      this.lastImage = newFileName;
+      let filePath = this.pathForImage2(this.lastImage);
+      // Write code for save data to database
+    }, error => {
+       console.log(error);
+       this.presentToast("Error while storing file 2");
+    });
+  }
+
+  // Always get the accurate path to your apps folder
+  public pathForImage2(img) {
+    if (img === null) {
+      return '';
+    } else {
+      return this.filew.dataDirectory + img;
+    }
+  }
+
+  public async copyFileToLocalDir(namePath, currentName, newFileName): Promise<any> {
+    const externalStoragePath: string = cordova.file.dataDirectory;
+    try {
+        const entry = await this.filew.resolveLocalFilesystemUrl(namePath + currentName);
+        const dirEntry: any = await this.filew.resolveLocalFilesystemUrl(externalStoragePath);
+
+        entry.copyTo(dirEntry, newFileName, () => { }, () => {
+            this.presentToast("Error while storing file 1.");
+        });
+        (async () => {
+          await this.prepareAll(newFileName);
+          this.uploadFileCount = this.rarray.length;
+          return newFileName;
+        })()  
+        console.log(this.imageArr.length)
+        
+    } catch (error) {
+        this.presentToast("Error while storing file 2.");
+    }
+}
+
+  public copyFileToLocalDirold(namePath, currentName, newFileName) {
     // cordova.file.dataDirectory
     let externalStoragePath: string =  cordova.file.dataDirectory;
     this.filew.resolveLocalFilesystemUrl(namePath + currentName)
@@ -362,7 +405,6 @@ export class IncreaseLimit {
             this.newfpath = dirEntry;
             this.presentToast("successfull storage");
             entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
-
             (async () => {
               await this.prepareAll(newFileName);
               this.uploadFileCount = this.rarray.length;
