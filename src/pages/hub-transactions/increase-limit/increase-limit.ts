@@ -384,7 +384,7 @@ export class IncreaseLimit {
         (async () => {
           await this.prepareAll(newFileName);
           this.uploadFileCount = this.rarray.length;
-          return newFileName;
+          // return newFileName;
         })()  
         console.log(this.imageArr.length)
         
@@ -392,6 +392,26 @@ export class IncreaseLimit {
         this.presentToast("Error while storing file 2.");
     }
 }
+
+  async prepareAll(newFilename){
+    new Promise((resolve, reject) => {
+      var targetPath = this.pathForImage(newFilename);
+      var filename = newFilename;
+      this.base64.encodeFile(targetPath).then((base64File: string) => {
+        this.base64enc = base64File;
+        let imageSrc = base64File.split(",");
+        // console.log("---Splitted image string----" + imageSrc[1]);
+        resolve(this.imageArr.push({
+          "Filename": filename,
+          "data": imageSrc[1]
+        }));
+      }, (err) => {
+        reject(err)
+        this.presentToast("base64" + err);
+        console.log("base46 err "+err);
+      });
+    });
+  }
 
   public copyFileToLocalDirold(namePath, currentName, newFileName) {
     // cordova.file.dataDirectory
@@ -420,25 +440,7 @@ export class IncreaseLimit {
       });
   }
 
-  async prepareAll(newFilename){
-    new Promise((resolve, reject) => {
-      var targetPath = this.pathForImage(newFilename);
-      var filename = newFilename;
-      this.base64.encodeFile(targetPath).then((base64File: string) => {
-        this.base64enc = base64File;
-        let imageSrc = base64File.split(",");
-        // console.log("---Splitted image string----" + imageSrc[1]);
-        resolve(this.imageArr.push({
-          "Filename": filename,
-          "data": imageSrc[1]
-        }));
-      }, (err) => {
-        reject(err)
-        this.presentToast("base64" + err);
-        console.log("base46 err "+err);
-      });
-    });
-  }
+
 
   // Always get the accurate path to your apps folder
   public pathForImage(img) {
@@ -450,44 +452,31 @@ export class IncreaseLimit {
   }
 
    public takePicture(sourceType) {
-    // Create options for the Camera Dialog
-    var options = {
-      quality: 100,
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true,
-      encodingType: this.camera.EncodingType.JPEG,
-      destinationType : this.camera.DestinationType.FILE_URI
-    };
+    const options: CameraOptions = {
+        sourceType: sourceType,
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        correctOrientation: true,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        targetWidth: 1024,
+        targetHeight: 1024
+    }
     // Get the data of an image DATA_URL
     this.camera.getPicture(options).then((imagePath) => {
       // Special handling for Android library
-      this.encoded_files = imagePath
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-        this.filePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            this.encoded_files = filePath
-            this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-            this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-            this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-            // this.prepareAll(this.lastImage);
-            // console.log
-          }, (err) => {
-            console.log(err)
-            this.presentToast(err + " 2");
-          });
-      } else {
-        this.correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-        this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-        this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-      }
-      this.rarray.push({"Filename": this.currentName})
-      // this.lastImage = null;
-      console.log(this.imageArr);
+
+      let picture = 'data:image/jpg;base64,' + imagePath;
+      let fileName = this.createFileName();
+      // Push to array
+      this.imageArr.push({
+          "Filename": fileName,
+          "data": picture
+      })
+
+      this.uploadFileCount = this.imageArr.length;
+
+      this.rarray.push({"Filename": fileName})
     }, (err) => {
       console.log(err)
       this.presentToast(err);
