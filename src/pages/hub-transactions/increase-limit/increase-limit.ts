@@ -464,7 +464,6 @@ export class IncreaseLimit {
     }
     // Get the data of an image DATA_URL
     this.camera.getPicture(options).then((imagePath) => {
-      // Special handling for Android library
 
       let picture =   imagePath;
       let fileName = this.createFileName();
@@ -476,7 +475,6 @@ export class IncreaseLimit {
 
       this.uploadFileCount = this.imageArr.length;
 
-      this.rarray.push({"Filename": fileName})
     }, (err) => {
       console.log(err)
       this.presentToast(err);
@@ -563,7 +561,7 @@ export class IncreaseLimit {
   }
 
   public submitform(){
-    if (this.rarray.length < 1) {
+    if (this.imageArr.length < 1) {
       // this.presentToast('Error Kindly Upload Your Document.');
       return this.reporTransactionerror('Error', 'Error Kindly Upload Your Document.');
     }
