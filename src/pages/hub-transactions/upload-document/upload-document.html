@@ -1,0 +1,43 @@
+<ion-menu [content]="content" swipeEnabled="false" type="overlay">
+  <ion-content>
+    <ion-list>
+      <ion-item menuClose  *ngFor="let p of pages" (click)="openPage(p.component)">
+        <ion-icon class="{{p.icon}}" item-left></ion-icon>
+        {{p.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <button ion-button clear menuClose (click)="logout()">Log out</button>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content  [class.animateApp]="animateVarible==true" swipeBackEnabled="false"></ion-nav> 
+
+
+<ion-content>
+  <ion-header>
+    <ion-navbar hideBackButton>
+      <ion-buttons left>
+        <button (click)="toggleMenu()" ion-button icon-only left>
+          <ion-icon name="ios-menu" style="color: white;"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Increase Limit</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <div class="uc-document__content">
+    <p>
+      <img class="document-image" src="assets/img/choose.svg" alt="document image"/>
+    </p>
+    <span>Please choose an </span>
+    <h3 class="uc-document__title">Option</h3>
+  </div>
+  <div class="uc-camera__upload" (click)="openBrowser()">
+    <span>VIP Application</span>
+  </div>
+  <div class="uc-divider"><span>or</span></div><br>
+  <div class="uc-camera__upload" (click)="increaseLimit()">
+    <span>Increase Limit</span>
+  </div>
+</ion-content>

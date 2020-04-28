@@ -33,6 +33,8 @@ import { File } from '@ionic-native/file';
 
 import { normalizeURL } from 'ionic-angular';
 
+import { UploadDocumentPage } from '../upload-document/upload-document'
+
 // import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -132,7 +134,7 @@ export class IncreaseLimit {
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
       { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
-      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
+      { title: 'Increase Limit', component: UploadDocumentPage, icon:'banki-user' }
     ];
     this.files = this.base64Image;
     // const token = localStorage.getItem('token');

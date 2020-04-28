@@ -29,6 +29,7 @@ import { SearchTxModalPage } from '../pages/wallet-details/search-tx-modal/searc
 
 import { ViewReport } from '../pages/hub-transactions/view-report/view-report';
 import { IncreaseLimit } from '../pages/hub-transactions/increase-limit/increase-limit';
+import { UploadDocumentPage } from '../pages/hub-transactions/upload-document/upload-document';
 
 
 import { WalletBalancePage } from '../pages/wallet-details/wallet-balance/wallet-balance';
@@ -226,6 +227,7 @@ export const PAGES = [
   TxpPage,
   ViewReport,
   IncreaseLimit,
+  UploadDocumentPage,
   WalletSettingsPage,
   WalletDeletePage,
   WalletNamePage,

@@ -10,8 +10,8 @@ import { LoginProvider } from '../../../providers/hub/service';
 // import { PopupProvider } from '../../providers/popup/popup';
 import { TransactionsPage } from '../transactions/transactions'
 import { ViewReport } from '../view-report/view-report'
-import { IncreaseLimit } from '../increase-limit/increase-limit'
-
+// import { IncreaseLimit } from '../increase-limit/increase-limit'
+import { UploadDocumentPage } from '../upload-document/upload-document'
 /**
  * Generated class for the AtmLocationsPage page.
  *
@@ -78,7 +78,7 @@ export class ReportDetailsPage {
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
       { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
-      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
+      { title: 'Increase Limit', component: UploadDocumentPage, icon:'banki-user' }
     ];
     // this.id = navParams.get('locationId');
     // this.serverJson = navParams.get('serverJson');

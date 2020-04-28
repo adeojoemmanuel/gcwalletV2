@@ -24,6 +24,7 @@ import { Logger } from '../../../providers/logger/logger';
 
 import { TransactionsPage } from '../transactions/transactions'
 import { ViewReport } from '../view-report/view-report'
+import { UploadDocumentPage } from '../upload-document/upload-document'
 
 // import { HttpClient,HttpHeaders} from '@angular/common/http';
 // import { Observable } from 'rxjs/Observable';
@@ -145,7 +146,8 @@ export class ReportTransaction {
       { title: 'Dashboard', component: TransactionsPage, icon:'banki-summary' },
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
-      { title: 'View Report', component: ViewReport, icon:'banki-exchange' }
+      { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
+      { title: 'Increase Limit', component: UploadDocumentPage, icon:'banki-user' }
     ];
     this.transactionData = navParams.get('dataSet');
     this.tfiat = this.getAmount(this.transactionData.amount_fiat);

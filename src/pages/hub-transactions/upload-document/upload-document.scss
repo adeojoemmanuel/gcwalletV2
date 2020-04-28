@@ -1,0 +1,131 @@
+page-upload-document {
+
+  .toolbar-content,
+  .toolbar span {
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .toolbar-background,
+  ion-navbar,
+  ion-header {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  .header-md::after,
+  .toolbar-background-ios {
+    background-image: none;
+    border-bottom: 0;
+  }
+
+  ion-content {
+    .scroll-content {
+      background: #fff;
+    }
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  $uc-color-yellow: #f69d34;
+  $uc-color-blue: #3f3d56;
+  $uc-color-white: #ffffff;
+
+  .uc-document__content {
+    background: $uc-color-blue;
+    padding: 70px 16px 40px 16px;
+    text-align: center;
+    color: $uc-color-white;
+    letter-spacing: 1.5px;
+    .document-image{
+        max-width: 200px;
+    }
+    .uc-document__title {
+      font-size: 3rem;
+      margin-top: 5px;
+      margin-bottom: 2rem;
+    }
+    
+    p{
+        color: rgba(255, 255, 255, 0.42);
+        font-weight: 200;
+    }
+  }
+
+  .uc-camera__upload {
+    font-size: 17px;
+    color: $uc-color-white;
+    background: $uc-color-yellow;
+    display: flex;
+    width: 185px;
+    margin: -22px auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-weight: 300;
+    box-shadow: 0px 5px 15px 0px rgba(246, 157, 52, 0.6);
+    ion-icon {
+      font-size: 3rem;
+      margin-right: 10px;
+    }
+  }
+
+  .uc-divider{
+      position: relative;
+      text-align: center;
+      margin:50px 0px 25px;
+      color: #aaa;
+      &:after{
+          content:'';
+          position: absolute;
+          width:215px;
+          top: 8px;
+          left:0;
+          right:0px;
+          margin: 0 auto;
+          border-bottom:1px solid #f1f1f1;
+      }
+      span{
+          position: relative;
+          background: $uc-color-white;
+          padding:5px 10px;
+          color:inherit;
+          z-index:2;
+      }
+  }
+
+  .uc-gallery {
+    &__document {
+      border: 1px solid #f1f1f1;
+      border-radius: 5px;
+      padding: 16px;
+      color: #aaa;
+      max-width: calc(100% - 30px);
+      margin-left: auto;
+      margin-right: auto;
+
+      span {
+        color: inherit;
+      }
+
+      ion-icon {
+        color: $uc-color-blue;
+        font-size: 4rem;
+      }
+
+      ion-row {
+        align-items: center;
+      }
+    }
+
+    &__title {
+      color: $uc-color-blue;
+      font-size: 16px;
+      margin: 0px;
+    }
+  }
+}
