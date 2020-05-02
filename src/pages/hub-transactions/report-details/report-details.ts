@@ -50,6 +50,7 @@ export class ReportDetailsPage {
   public listoption;
   public files;
   public trasacid;
+  // public reportKind: boolean = true;
   // private menu: MenuController
   public pages: Array<{title: string, component: any,icon:any}>;
 

@@ -44,9 +44,9 @@
               (click)="goToReportDetails(data.id, data)">
           <button ion-item class="item-ios">
             <ion-icon item-right name="md-add-circle"></ion-icon>
-            <p>Transaction Date: {{ convertdate(data.transaction_date) }}</p>
+            <p>Date: {{ convertdate(data.transaction_date) }}</p>
             <p class="cost">
-                Transaction Amount: {{ data.amount_fiat }} 
+                 Amount: {{ data.amount_fiat }} 
             </p>
             <p>Update : {{ checktag(data.zendesk_ticket.tags) }} <span></span></p>
             <p>Status : {{ getstatuscondition(data.zendesk_ticket.status) }} <span></span></p>
