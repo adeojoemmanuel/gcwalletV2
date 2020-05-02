@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams,  MenuController} from 'ionic-angul
 
 import { TransactionsPage } from '../transactions/transactions'
 import { ViewReport } from '../view-report/view-report'
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { IncreaseLimit } from '../increase-limit/increase-limit'
 
 @IonicPage()
@@ -14,6 +14,9 @@ import { IncreaseLimit } from '../increase-limit/increase-limit'
 })
 export class UploadDocumentPage {
   public pages: Array<{title: string, component: any,icon:any}>;
+  broweroption : InAppBrowserOptions = {
+      zoom : 'no',//Android only ,shows browser zoom controls 
+   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private iab: InAppBrowser) {
   	this.pages = [
@@ -39,7 +42,8 @@ export class UploadDocumentPage {
   }
 
   openBrowser(){
-    this.iab.create('https://www.getcoins.com/vipapplication/');
+    let target = "_blank";
+    this.iab.create('https://www.getcoins.com/vipapplication/', target, this.broweroption);
   }
 
   toggleMenu() {
