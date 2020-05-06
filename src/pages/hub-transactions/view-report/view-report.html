@@ -45,9 +45,11 @@
           <button ion-item class="item-ios">
             <ion-icon item-right name="md-add-circle"></ion-icon>
             <p>Date: {{ convertdate(data.transaction_date) }}</p>
-            <p class="cost">
-                 Amount: {{ data.amount_fiat }} 
-            </p>
+            <div *ngIf="data.email !='verfication@getcoins.com'">
+              <p class="cost">
+                   Amount: {{ data.amount_fiat }} 
+              </p>
+            </div>
             <p>Update : {{ checktag(data.zendesk_ticket.tags) }} <span></span></p>
             <p>Status : {{ getstatuscondition(data.zendesk_ticket.status) }} <span></span></p>
           </button>

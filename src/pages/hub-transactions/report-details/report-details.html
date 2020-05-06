@@ -117,6 +117,22 @@
     <p style="color: black;"><strong>TRANSACTION DETAILS:</strong></p>
     <ion-grid>
       <p>Your Verification Has Been Successfully Submitted</p>
+      <ion-row class="bottomRow">
+        <ion-col col-4 text-left>
+          <p>Date Submitted</p>
+        </ion-col>
+        <ion-col col-8 text-right>
+          <p>{{ transdata.created_at }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="bottomRow">
+          <ion-col col-4 text-left>
+            <p>Status</p>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <p>{{ getstatuscondition(transdata.zendesk_ticket.status) }}</p>
+          </ion-col>
+      </ion-row>
     </ion-grid>
   </div>
 </ion-content>

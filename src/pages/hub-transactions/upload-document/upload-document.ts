@@ -42,8 +42,9 @@ export class UploadDocumentPage {
   }
 
   openBrowser(){
-    let target = "_self";
-    this.iab.create('https://www.getcoins.com/vipapplication/', target, this.broweroption);
+    let target = "_blank";
+    window.open("https://www.getcoins.com/vipapplication/",target, 'zoom=no');
+    // this.iab.create('https://www.getcoins.com/vipapplication/', target, this.broweroption);
   }
 
   toggleMenu() {
