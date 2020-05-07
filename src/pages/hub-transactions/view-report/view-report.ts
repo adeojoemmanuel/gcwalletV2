@@ -26,7 +26,8 @@ import { ReportDetailsPage } from '../report-details/report-details';
 
 import { ReportTransaction } from '../report-transaction/report-transaction'
 
-import { IncreaseLimit } from '../increase-limit/increase-limit'
+
+import { UploadDocumentPage } from '../upload-document/upload-document'
 import { TransactionsPage } from '../transactions/transactions'
 import { DatePipe } from '@angular/common'
 import { HTTP } from '@ionic-native/http';
@@ -105,7 +106,7 @@ export class ViewReport implements OnInit {
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
       { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
-      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
+      { title: 'Increase Limit', component: UploadDocumentPage, icon:'banki-user' }
     ];
   }
   

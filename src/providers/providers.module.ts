@@ -84,7 +84,8 @@ import {
   IOSFilePicker,
   FilePath,
   Transfer,
-  AndroidPermissions
+  AndroidPermissions,
+  InAppBrowser
 } from './index';
 
 @NgModule({
@@ -171,7 +172,8 @@ import {
     IOSFilePicker,
     FilePath,
     Transfer,
-    AndroidPermissions
+    AndroidPermissions,
+    InAppBrowser
   ]
 })
 export class ProvidersModule {}

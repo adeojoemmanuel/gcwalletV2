@@ -31,6 +31,10 @@ import { FilePath } from "@ionic-native/file-path";
 
 import { File } from '@ionic-native/file';
 
+import { normalizeURL } from 'ionic-angular';
+
+import { UploadDocumentPage } from '../upload-document/upload-document'
+
 // import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 import { DomSanitizer } from '@angular/platform-browser';
@@ -130,7 +134,7 @@ export class IncreaseLimit {
       { title: 'Transactions', component: TransactionsPage, icon:'banki-transfer' },
       // { title: 'Report Transaction', component: ReportTransaction, icon:'banki-exchange' },
       { title: 'View Report', component: ViewReport, icon:'banki-exchange' },
-      { title: 'Increase Limit', component: IncreaseLimit, icon:'banki-user' }
+      { title: 'Increase Limit', component: UploadDocumentPage, icon:'banki-user' }
     ];
     this.files = this.base64Image;
     // const token = localStorage.getItem('token');
@@ -350,49 +354,49 @@ export class IncreaseLimit {
       this.presentToast(error);
   }
 
-  public copyFileToLocalDir(namePath, currentName, newFileName) {
-    // cordova.file.dataDirectory
-    let externalStoragePath: string =  cordova.file.dataDirectory;
-    this.filew.resolveLocalFilesystemUrl(namePath + currentName)
-      .then((entry: any)=>{
-        // console.log('entry',entry);
-        // this.presentToast(entry);
-        this.filew.resolveLocalFilesystemUrl(externalStoragePath)
-          .then((dirEntry: any)=>{
-            this.newfpath = dirEntry;
-            this.presentToast("successfull storage");
-            entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
-
-            // this.lastImage = newFileName;
-            // var targetPath = this.pathForImage(newFileName);
-            // var filename = newFileName;
-            // this.base64.encodeFile(targetPath).then((base64File: string) => {
-            //   this.base64enc = base64File;
-            //   let imageSrc = base64File.split(",");
-            //   // console.log("---Splitted image string----" + imageSrc[1]);
-            //   this.imageArr.push({
-            //     "Filename": filename,
-            //     "data": imageSrc[1]
-            //   });
-            // }, (err) => {
-            //   // reject(err)
-            //   console.log(err);
-            // });
-
-            (async () => {
-              await this.prepareAll(newFileName);
-              this.uploadFileCount = this.rarray.length;
-             })()  
-             console.log(this.imageArr.length)
-          }).catch((error)=>{
-            console.log(error);
-            this.presentToast("Error while storing file 1");      
-          });
-      }).catch((error)=>{
-        console.log(error);
-        this.presentToast("Error while storing file 2");
-      });
+  private copyFileToLocalDir3(namePath, currentName, newFileName) {
+    this.filew.copyFile(namePath, currentName, this.filew.dataDirectory, newFileName).then(success => {
+      this.lastImage = newFileName;
+      let filePath = this.pathForImage2(this.lastImage);
+      // Write code for save data to database
+    }, error => {
+       console.log(error);
+       this.presentToast("Error while storing file 2");
+    });
   }
+
+  // Always get the accurate path to your apps folder
+  public pathForImage2(img) {
+    if (img === null) {
+      return '';
+    } else {
+      return this.filew.dataDirectory + img;
+    }
+  }
+
+  public async copyFileToLocalDir(namePath, currentName, newFileName): Promise<any> {
+    const externalStoragePath: string = cordova.file.dataDirectory;
+    try {
+        const entry = await this.filew.resolveLocalFilesystemUrl(namePath + currentName);
+        const dirEntry: any = await this.filew.resolveLocalFilesystemUrl(externalStoragePath);
+
+        entry.copyTo(dirEntry, newFileName, () => { }, () => {
+            this.presentToast("Error while storing file 1.");
+        });
+        (async () => {
+          await this.prepareAll(newFileName);
+          this.uploadFileCount = this.rarray.length;
+          return newFileName;
+        })()  
+        console.log(this.imageArr.length)
+        
+    } catch (error) {
+        this.presentToast("Error while storing file 2.");
+    }
+}
+
+
+
 
   async prepareAll(newFilename){
     new Promise((resolve, reject) => {
@@ -409,7 +413,7 @@ export class IncreaseLimit {
       }, (err) => {
         reject(err)
         this.presentToast("base64" + err);
-        console.log(err);
+        console.log("base46 err "+err);
       });
     });
   }
@@ -423,50 +427,82 @@ export class IncreaseLimit {
     }
   }
 
-   public takePicture(sourceType) {
-    // Create options for the Camera Dialog
-    var options = {
-      quality: 100,
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true,
-      encodingType: this.camera.EncodingType.JPEG,
-      destinationType : this.camera.DestinationType.FILE_URI
-    };
+  public takePicture(sourceType) {
+    const options: CameraOptions = {
+        sourceType: sourceType,
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        correctOrientation: true,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        targetWidth: 1024,
+        targetHeight: 1024
+    }
     // Get the data of an image DATA_URL
     this.camera.getPicture(options).then((imagePath) => {
-      // Special handling for Android library
-      this.encoded_files = imagePath
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-        this.filePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            this.encoded_files = filePath
-            this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-            this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-            this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-            this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-            // this.prepareAll(this.lastImage);
-            // console.log
-          }, (err) => {
-            console.log(err)
-            this.presentToast(err + " 2");
-          });
-      } else {
-        this.correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
-        this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
-        this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
-      }
-      this.rarray.push({"Filename": this.currentName})
-      // this.lastImage = null;
-      console.log(this.imageArr);
+      // let imageSrc = imagePath.split(",");
+      let picture =   imagePath;
+      let fileName = this.createFileName();
+      // Push to array
+      this.imageArr.push({
+          "Filename": fileName,
+          "data": picture
+      })
+
+      this.uploadFileCount = this.imageArr.length;
+
     }, (err) => {
       console.log(err)
+      this.uploadFileCount = 0;
       this.presentToast(err);
     });
   }
+
+
+  //  public takePicture(sourceType) {
+  //   // Create options for the Camera Dialog
+  //   var options = {
+  //     quality: 100,
+  //     sourceType: sourceType,
+  //     saveToPhotoAlbum: false,
+  //     correctOrientation: true,
+  //     encodingType: this.camera.EncodingType.JPEG,
+  //     destinationType : this.camera.DestinationType.FILE_URI
+  //   };
+  //   // Get the data of an image DATA_URL
+  //   this.camera.getPicture(options).then((imagePath) => {
+  //     // Special handling for Android library
+  //     this.encoded_files = imagePath
+  //     if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
+  //       this.filePath.resolveNativePath(imagePath)
+  //         .then(filePath => {
+  //           this.encoded_files = filePath
+  //           this.correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
+  //           this.currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+  //           this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
+  //           this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
+  //           this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
+  //           // this.prepareAll(this.lastImage);
+  //           // console.log
+  //         }, (err) => {
+  //           console.log(err)
+  //           this.presentToast(err + " 2");
+  //         });
+  //     } else {
+  //       this.correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+  //       this.currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+  //       this.photoSrc  = 'data:image/jpg;base64,' + imagePath;
+  //       this.cameraPhoto = this._DomSanitizer.bypassSecurityTrustUrl(this.photoSrc)
+  //       this.copyFileToLocalDir(this.correctPath, this.currentName, this.createFileName());
+  //     }
+  //     this.rarray.push({"Filename": this.currentName})
+  //     // this.lastImage = null;
+  //     console.log(this.imageArr);
+  //   }, (err) => {
+  //     console.log(err)
+  //     this.presentToast(err);
+  //   });
+  // }
 
   public AccessGallery(){
     var options = {
@@ -502,7 +538,7 @@ export class IncreaseLimit {
   }
 
   public submitform(){
-    if (this.imageArr.length <= 0) {
+    if (this.imageArr.length < 1) {
       // this.presentToast('Error Kindly Upload Your Document.');
       return this.reporTransactionerror('Error', 'Error Kindly Upload Your Document.');
     }
@@ -565,7 +601,7 @@ export class IncreaseLimit {
         this.presentToast('Error while uploading file.');
         console.log(error);
         return this.reporTransactionerror('Error', error.message);
-        
+         this.rarray.length = 0;
       });
   }
      

@@ -25,6 +25,7 @@ export { FileChooser } from "@ionic-native/file-chooser";
 export { IOSFilePicker } from "@ionic-native/file-picker";
 export { FilePath } from "@ionic-native/file-path";
 export { Transfer } from '@ionic-native/transfer';
+export { InAppBrowser } from '@ionic-native/in-app-browser';
 export { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 

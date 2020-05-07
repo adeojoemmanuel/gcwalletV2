@@ -1,5 +1,6 @@
-increase-limit {
-.toolbar-content,
+page-upload-document {
+
+  .toolbar-content,
   .toolbar span {
     color: rgba(255, 255, 255, 0.42);
   }
@@ -30,7 +31,7 @@ increase-limit {
   }
 
   $uc-color-yellow: #f69d34;
-  $uc-color-blue: #162a53;
+  $uc-color-blue: #3f3d56;
   $uc-color-white: #ffffff;
 
   .uc-document__content {
@@ -43,7 +44,7 @@ increase-limit {
         max-width: 200px;
     }
     .uc-document__title {
-      font-size: 5rem;
+      font-size: 3rem;
       margin-top: 5px;
       margin-bottom: 2rem;
     }
@@ -53,28 +54,6 @@ increase-limit {
         font-weight: 200;
     }
   }
-
-  .img-upload-count {
-    font-size: 10px;
-    width: 185px;
-    align-items: center;
-  }
-
-  .uc-submit__buttonn {
-    font-size: 17px;
-    color: $uc-color-white;
-    background: $uc-color-yellow;
-    display: flex;
-    width: 185px;
-    margin: -22px auto;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    padding: 8px 16px;
-    font-weight: 300;
-    box-shadow: 0px 5px 15px 0px rgba(246, 157, 52, 0.6);
-  }
-
 
   .uc-camera__upload {
     font-size: 17px;
