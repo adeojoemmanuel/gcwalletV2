@@ -395,32 +395,6 @@ export class IncreaseLimit {
     }
 }
 
-  public copyFileToLocalDirold(namePath, currentName, newFileName) {
-    // cordova.file.dataDirectory
-    let externalStoragePath: string =  cordova.file.dataDirectory;
-    this.filew.resolveLocalFilesystemUrl(namePath + currentName)
-      .then((entry: any)=>{
-        // console.log('entry',entry);
-        // this.presentToast(entry);
-        this.filew.resolveLocalFilesystemUrl(externalStoragePath)
-          .then((dirEntry: any)=>{
-            this.newfpath = dirEntry;
-            this.presentToast("successfull storage");
-            entry.copyTo(dirEntry, newFileName, this.successCallback, this.errorCallback);
-            (async () => {
-              await this.prepareAll(newFileName);
-              this.uploadFileCount = this.rarray.length;
-             })()  
-             console.log(this.imageArr.length)
-          }).catch((error)=>{
-            console.log(error);
-            this.presentToast("Error while storing file 1");      
-          });
-      }).catch((error)=>{
-        console.log(error);
-        this.presentToast("Error while storing file 2");
-      });
-  }
 
 
 
@@ -466,7 +440,7 @@ export class IncreaseLimit {
     }
     // Get the data of an image DATA_URL
     this.camera.getPicture(options).then((imagePath) => {
-
+      // let imageSrc = imagePath.split(",");
       let picture =   imagePath;
       let fileName = this.createFileName();
       // Push to array
@@ -479,6 +453,7 @@ export class IncreaseLimit {
 
     }, (err) => {
       console.log(err)
+      this.uploadFileCount = 0;
       this.presentToast(err);
     });
   }
