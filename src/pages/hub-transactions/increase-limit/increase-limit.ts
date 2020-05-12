@@ -453,7 +453,7 @@ export class IncreaseLimit {
 
     }, (err) => {
       console.log(err)
-      this.uploadFileCount = 0;
+      // this.uploadFileCount = 0;
       this.presentToast(err);
     });
   }
