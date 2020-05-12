@@ -357,3 +357,5 @@ sudo cordova plugin rm cordova-plugin-wkwebview-engine --force
 UIApplicationOpenSettingsURLString
 
 $cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
+
+https://stackoverflow.com/questions/48929646/open-external-url-on-ios-ionic-2
